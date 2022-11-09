@@ -2,9 +2,9 @@ import './Container.css';
 
 const Container = () => {
   return (
-    <nav>
+    <section>
       I am Container
-    </nav>
+    </section>
   );
 }
 
