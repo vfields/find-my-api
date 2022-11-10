@@ -1,4 +1,4 @@
-import { Dispatch, useState } from 'react';
+import { Dispatch } from 'react';
 import './Search.css';
 import MultiSelect from '../MultiSelect/MultiSelect';
 
@@ -11,6 +11,11 @@ interface SearchProps {
 }
 
 const Search = ({ categories, selected, keyword, setSelected, setKeyword  }: SearchProps) => {
+  const clearForm = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault();
+    setSelected([]);
+    setKeyword('');
+  }
 
   return (
     <form className="api-search-form">
@@ -26,6 +31,7 @@ const Search = ({ categories, selected, keyword, setSelected, setKeyword  }: Sea
         placeholder="Search By Keyword!"
         onChange={(event) => setKeyword(event.target.value)}
       />
+      <button type="submit" onClick={clearForm}>Clear My Search!</button>
     </form>
   );
 }
