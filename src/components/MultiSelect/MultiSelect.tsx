@@ -1,14 +1,16 @@
-import { useState, useRef } from 'react';
+import { Dispatch, useState, useRef } from 'react';
 import './MultiSelect.css';
 import useOnClickOutside from '../../useOnClickOutside';
 
 interface MultiSelectProps {
   categories: string[];
+  selected: string[];
+  selectedAll: boolean;
+  setSelected: Dispatch<React.SetStateAction<string[]>>;
+  setSelectedAll: Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MultiSelect = ({ categories }: MultiSelectProps) => {
-  const [selected, setSelected] = useState<string[]>([]);
-  const [selectedAll, setSelectedAll] = useState<boolean>(false);
+const MultiSelect = ({ categories, selected, selectedAll, setSelected, setSelectedAll }: MultiSelectProps) => {
   const [showCategories, setShowCategories] = useState<boolean>(false);
   const ref = useRef<HTMLInputElement | null>(null);
 

@@ -7,12 +7,18 @@ interface SearchProps {
 }
 
 const Search = ({ categories }: SearchProps) => {
-  const [keyword, setKeyword] = useState<string>('')
+  const [selected, setSelected] = useState<string[]>([]);
+  const [selectedAll, setSelectedAll] = useState<boolean>(false);
+  const [keyword, setKeyword] = useState<string>('');
 
   return (
     <form className="api-search-form">
       <MultiSelect
         categories={categories}
+        selected={selected}
+        setSelected={setSelected}
+        selectedAll={selectedAll}
+        setSelectedAll={setSelectedAll}
       />
       <input
         type="text"
