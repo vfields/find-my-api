@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0.25rem;
-  width: 25rem;
+  width: 50vw;
 }
 
 .select-category-dropdown img {
@@ -18,8 +18,8 @@
   border: 0.1rem solid red;
   padding: 0.25rem;
   margin-top: 0.25rem;
-  height: 25rem;
-  width: 25rem;
+  height: 25vh;
+  width: 50vw;
   overflow: auto;
 }
 
