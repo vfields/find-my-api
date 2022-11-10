@@ -1,36 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './Search.css';
+import MultiSelect from '../MultiSelect/MultiSelect';
 
-const Search = () => {
-  const [categories, setCategories] = useState([]);
-  const [category, setCategory] = useState('');
+interface SearchProps {
+  categories: string[];
+}
 
-  useEffect(() => {
-    fetch('https://api.publicapis.org/categories')
-      .then(response => response.json())
-      .then(data => setCategories(data.categories))
-  }, [])
-
-  // can categories be called and stored in App?
-  
+const Search = ({ categories }: SearchProps) => {
+  const [keyword, setKeyword] = useState<string>('')
 
   return (
     <form className="api-search-form">
-      <select
-        name="category"
-        value={category}
-        onChange={(event => setCategory(event.target.value))}
-      >
-        <option value="">--Choose A Category--</option>
-        <option value="all">All Categories</option>
-        {categories.map((category, index) => {
-          return (
-            <option key={index} value={category}>{category}</option>
-          )
-        })}
-      </select>
+      <MultiSelect
+        categories={categories}
+      />
       <input
-        type="text" 
+        type="text"
+        name="keyword"
+        value={keyword}
+        placeholder="Search By Keyword!"
+        onChange={(event) => setKeyword(event.target.value)}
       />
     </form>
   );

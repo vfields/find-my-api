@@ -3,8 +3,6 @@ import './App.css';
 import Nav from '../Nav/Nav';
 import Search from '../Search/Search';
 import Container from '../Container/Container';
-import MultiSelect from '../MultiSelect/MultiSelect';
-
 
 function App() {
   const [categories, setCategories] = useState<string[]>([]);
@@ -19,11 +17,10 @@ function App() {
     <main>
       <Nav />
       I am App
-      <Search />
-      <Container />
-      <MultiSelect
+      <Search
         categories={categories}
       />
+      <Container />
     </main>
   );
 }

@@ -75,7 +75,7 @@ const MultiSelect = ({ categories }: MultiSelectProps) => {
 
   let selectText;
   if (!selected.length && !selectedAll) {
-    selectText = 'Select Category';
+    selectText = 'Search By Category!';
   } else if (selectedAll) {
     selectText = 'All Categories Selected';
   } else if (selected.length === 1) {
