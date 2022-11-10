@@ -5,12 +5,10 @@ import useOnClickOutside from '../../useOnClickOutside';
 interface MultiSelectProps {
   categories: string[];
   selected: string[];
-  selectedAll: boolean;
   setSelected: Dispatch<React.SetStateAction<string[]>>;
-  setSelectedAll: Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MultiSelect = ({ categories, selected, selectedAll, setSelected, setSelectedAll }: MultiSelectProps) => {
+const MultiSelect = ({ categories, selected, setSelected }: MultiSelectProps) => {
   const [showCategories, setShowCategories] = useState<boolean>(false);
   const ref = useRef<HTMLInputElement | null>(null);
 
@@ -20,24 +18,12 @@ const MultiSelect = ({ categories, selected, selectedAll, setSelected, setSelect
   }
 
   const toggleSelected = (name: string) => {
-    if (name === "all") {
-      setSelected([]);
-      setSelectedAll(!selectedAll);
-      manageInputs();
-    }
-    else if (selected.includes(name)) {
+    if (selected.includes(name)) {
       removeSelected(name);
     } 
     else {
       setSelected([...selected, name]);
     }
-  }
-
-  const manageInputs = () => {
-    const inputs = Array.from(document.querySelectorAll('.category'));
-    inputs.forEach(input => {
-      input.toggleAttribute('disabled');
-    });
   }
 
   // potential to create a small component here
@@ -49,7 +35,6 @@ const MultiSelect = ({ categories, selected, selectedAll, setSelected, setSelect
           type="checkbox"
           name={category}
           checked={selected.includes(category)}
-          disabled={selectedAll}
           onChange={(event) => toggleSelected(event.target.name)}
         />
         {category}
@@ -66,20 +51,11 @@ const MultiSelect = ({ categories, selected, selectedAll, setSelected, setSelect
     )
   })
 
-  // can make resuable with selectedOptoins with optional type params
-  const allOption = (
-    <article>
-      <span onClick={() => setSelectedAll(false)}>All Categories ❌</span>
-    </article>
-  )
-
   useOnClickOutside(ref, () => setShowCategories(false));
 
-  let selectText;
-  if (!selected.length && !selectedAll) {
+  let selectText = '';
+  if (!selected.length) {
     selectText = 'Search By Category!';
-  } else if (selectedAll) {
-    selectText = 'All Categories Selected';
   } else if (selected.length === 1) {
     selectText = '1 Category Selected';
   } else {
@@ -92,22 +68,8 @@ const MultiSelect = ({ categories, selected, selectedAll, setSelected, setSelect
         <span className="select-text">{selectText}</span>
         <img src="https://cdn1.iconfinder.com/data/icons/arrows-vol-1-4/24/dropdown_arrow-1024.png" alt="drop down arrow icon" />
       </div>
-      {showCategories && 
-      <div ref={ref} className="category-dropdown-display">
-        {/* this could be the same small component you use for categoryOptions with optional params... */}
-        <label className="category-option">
-          <input 
-            type="checkbox"
-            name="all"
-            checked={selectedAll}
-            onChange={(event) => toggleSelected(event.target.name)}
-          />
-          <span className="all-categories-option">All Categories</span>
-        </label>
-        {categoryOptions}
-      </div>}
+      {showCategories && <div ref={ref} className="category-dropdown-display">{categoryOptions}</div>}
       {selectedOptions}
-      {selectedAll && allOption}
     </>
   )
 }

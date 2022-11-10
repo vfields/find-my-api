@@ -11,7 +11,6 @@ interface SearchProps {
 }
 
 const Search = ({ categories, selected, keyword, setSelected, setKeyword  }: SearchProps) => {
-  const [selectedAll, setSelectedAll] = useState<boolean>(false);
 
   return (
     <form className="api-search-form">
@@ -19,8 +18,6 @@ const Search = ({ categories, selected, keyword, setSelected, setKeyword  }: Sea
         categories={categories}
         selected={selected}
         setSelected={setSelected}
-        selectedAll={selectedAll}
-        setSelectedAll={setSelectedAll}
       />
       <input
         type="text"
