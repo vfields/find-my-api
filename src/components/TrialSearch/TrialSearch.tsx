@@ -15,7 +15,6 @@ Essentially, useRef is like a “box” that can hold a mutable value in its .cu
 function useOnClickOutside(ref: any, handler: any) {
   useEffect(
     () => {
-      console.log(ref)
       const listener = (event: any) => {
         // Do nothing if clicking ref's element or its children
         if (!ref.current || ref.current.contains(event.target)) {
@@ -41,7 +40,8 @@ function useOnClickOutside(ref: any, handler: any) {
 const TrialSearch = () => {
 
   const [categories, setCategories] = useState([]);
-  // const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState<string[]>([]);
+  const [selectedAll, setSelectedAll] = useState(false);
 
   useEffect(() => {
     fetch('https://api.publicapis.org/categories')
@@ -51,13 +51,43 @@ const TrialSearch = () => {
 
   // can I borrow from the multiselect solution and use toggleSelected as the 
   // onChange function in my inputs... and then assign checked atr to state?
+  // trial vv
+
+  const toggleSelected = (name: string) => {
+    if (name === "all") {
+      setSelected([]);
+      setSelectedAll(!selectedAll);
+      manageInputs();
+    }
+    else if (selected.includes(name)) {
+      const newSelections = selected.filter(selection => selection !== name);
+      setSelected(newSelections);
+    } 
+    else {
+      setSelected([...selected, name])
+    }
+  }
+
+  const manageInputs = () => {
+    const inputs = Array.from(
+      document.querySelectorAll('.not-all')
+    );
+    inputs.forEach(input => {
+      input.toggleAttribute('disabled');
+    })
+  }
+
+  // trial ^^ 
 
   const categoryOptions = categories.map((category, index) => {
     return (
       <label key={index} className="categories-option">
         <input 
+          className="not-all"
           type="checkbox"
           name={category}
+          checked={selected.includes(category)}
+          onChange={(event) => toggleSelected(event.target.name)}
         />
         {category}
       </label>
@@ -66,7 +96,8 @@ const TrialSearch = () => {
 
   const [isShown, setIsShown] = useState(false);
 
-  const ref = useRef(null); // ref is weird, seemingly have to assign it to null to get TS out of the way
+  const ref = useRef(null); 
+  // ref is weird, seemingly have to assign it to null to get TS out of the way
 
   useOnClickOutside(ref, () => setIsShown(false));
 
@@ -80,7 +111,7 @@ const TrialSearch = () => {
       {isShown && 
       <div ref={ref} className="test-category-display">
         <label className="all-categories-option categories-option">
-          <input type="checkbox"></input>
+          <input type="checkbox" name="all" checked={selectedAll} onChange={(event) => toggleSelected(event.target.name)}></input>
           All Categories
         </label>
         {categoryOptions}
