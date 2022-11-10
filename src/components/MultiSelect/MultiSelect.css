@@ -17,6 +17,11 @@
   list-style: none;
 }
 
+.dropdown-option-checkbox {
+  margin-right: 0.5rem;
+}
+
 .dropdown-option:hover {
   background-color: grey;
+  cursor: pointer;
 }

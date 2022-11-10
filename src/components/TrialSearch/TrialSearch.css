@@ -1,0 +1,39 @@
+.select-category-btn {
+  border: 0.25rem solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem;
+  width: 25rem;
+}
+
+.select-category-btn img {
+  height: 1rem;
+}
+
+.select-category-btn:hover {
+  cursor: pointer;
+}
+
+/* testing things! */
+
+.test-category-display {
+  border: 0.1rem solid red;
+  padding: 0.25rem;
+  margin-top: 0.25rem;
+  height: 25rem;
+  width: 25rem;
+  overflow: auto;
+}
+
+.all-categories-option {
+  font-weight: 700;
+}
+
+.categories-option {
+  display: block;
+}
+
+.categories-option:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
