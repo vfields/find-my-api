@@ -3,7 +3,7 @@ import './App.css';
 import Nav from '../Nav/Nav';
 import Search from '../Search/Search';
 import Container from '../Container/Container';
-import TrialSearch from '../TrialSearch/TrialSearch';
+import MultiSelect from '../MultiSelect/MultiSelect';
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       I am App
       <Search />
       <Container />
-      <TrialSearch
+      <MultiSelect
         categories={categories}
       />
     </main>
