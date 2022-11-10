@@ -41,6 +41,7 @@ function useOnClickOutside(ref: any, handler: any) {
 const TrialSearch = () => {
 
   const [categories, setCategories] = useState([]);
+  // const [selected, setSelected] = useState([]);
 
   useEffect(() => {
     fetch('https://api.publicapis.org/categories')
@@ -48,10 +49,16 @@ const TrialSearch = () => {
       .then(data => setCategories(data.categories))
   }, [])
 
+  // can I borrow from the multiselect solution and use toggleSelected as the 
+  // onChange function in my inputs... and then assign checked atr to state?
+
   const categoryOptions = categories.map((category, index) => {
     return (
       <label key={index} className="categories-option">
-        <input type="checkbox"></input>
+        <input 
+          type="checkbox"
+          name={category}
+        />
         {category}
       </label>
     )
