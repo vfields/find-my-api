@@ -1,54 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import './TrialSearch.css';
+import useOnClickOutside from '../../useOnClickOutside';
 
-/* const refContainer = useRef(initialValue); 
-
-useRef returns a mutable ref object whose .current property is 
-initialized to the passed argument (initialValue). The returned object will 
-persist for the full lifetime of the component.
-
-Essentially, useRef is like a “box” that can hold a mutable value in its .current property.
-
-*/
-
-function useOnClickOutside(ref: any, handler: any) {
-  useEffect(
-    () => {
-      const listener = (event: any) => {
-        // Do nothing if clicking ref's element or its children
-        if (!ref.current || ref.current.contains(event.target)) {
-          return;
-        }
-        handler(event);
-      };
-      document.addEventListener("mousedown", listener);
-      document.addEventListener("touchstart", listener);
-
-      // when the component unmounts, clean up 
-      return () => {
-        document.removeEventListener("mousedown", listener);
-        document.removeEventListener("touchstart", listener);
-      };
-    },
-    // only listen to ref and handler for this effect
-    [ref, handler]
-  );
+interface TrialSearchProps {
+  categories: string[];
 }
 
+const TrialSearch = ({ categories }: TrialSearchProps) => {
 
-const TrialSearch = () => {
-
-  const [categories, setCategories] = useState([]);
   const [selected, setSelected] = useState<string[]>([]);
-  const [selectedAll, setSelectedAll] = useState(false);
-
-  useEffect(() => {
-    fetch('https://api.publicapis.org/categories')
-      .then(response => response.json())
-      .then(data => setCategories(data.categories))
-  }, [])
-
-  // trial vv
+  const [selectedAll, setSelectedAll] = useState<boolean>(false);
 
   const toggleSelected = (name: string) => {
     if (name === "all") {
@@ -61,29 +22,38 @@ const TrialSearch = () => {
       setSelected(newSelections);
     } 
     else {
-      setSelected([...selected, name])
+      setSelected([...selected, name]);
     }
   }
 
   const manageInputs = () => {
     const inputs = Array.from(
-      document.querySelectorAll('.not-all')
+      document.querySelectorAll('.category')
     );
     inputs.forEach(input => {
       input.toggleAttribute('disabled');
-    })
+    });
   }
 
-  // trial ^^ 
+  const disableInputs = () => {
+    const inputs = Array.from(
+      document.querySelectorAll('.category')
+    );
+    console.log('these are the disabled inputs', inputs)
+    inputs.forEach(input => {
+      input.setAttribute('disabled', '');
+    });
+  }
 
   const categoryOptions = categories.map((category, index) => {
     return (
       <label key={index} className="categories-option">
         <input 
-          className="not-all"
+          className="category"
           type="checkbox"
           name={category}
           checked={selected.includes(category)}
+          disabled={selectedAll}
           onChange={(event) => toggleSelected(event.target.name)}
         />
         {category}
@@ -91,24 +61,28 @@ const TrialSearch = () => {
     )
   })
 
-  const [isShown, setIsShown] = useState(false);
+  const [showCategories, setShowCategories] = useState(false);
 
   const ref = useRef(null); 
   // ref is weird, seemingly have to assign it to null to get TS out of the way
 
-  useOnClickOutside(ref, () => setIsShown(false));
-
+  useOnClickOutside(ref, () => setShowCategories(false));
 
   return (
     <>
-      <div className="select-category-btn" onClick={() => setIsShown(true)}>
+      <div className="select-category-btn" onClick={() => setShowCategories(true)}>
         <span>Select Category</span>
         <img src="https://cdn1.iconfinder.com/data/icons/arrows-vol-1-4/24/dropdown_arrow-1024.png" />
       </div>
-      {isShown && 
+      {showCategories && 
       <div ref={ref} className="test-category-display">
         <label className="all-categories-option categories-option">
-          <input type="checkbox" name="all" checked={selectedAll} onChange={(event) => toggleSelected(event.target.name)}></input>
+          <input 
+            type="checkbox"
+            name="all"
+            checked={selectedAll}
+            onChange={(event) => toggleSelected(event.target.name)}
+          />
           All Categories
         </label>
         {categoryOptions}
