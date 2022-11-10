@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import './TrialSearch.css';
-import MultiSelect from '../MultiSelect/MultiSelect';
 
 /* const refContainer = useRef(initialValue); 
 
@@ -49,8 +48,6 @@ const TrialSearch = () => {
       .then(data => setCategories(data.categories))
   }, [])
 
-  // can I borrow from the multiselect solution and use toggleSelected as the 
-  // onChange function in my inputs... and then assign checked atr to state?
   // trial vv
 
   const toggleSelected = (name: string) => {
@@ -121,40 +118,3 @@ const TrialSearch = () => {
 }
 
 export default TrialSearch
-
-// some logic for MultiSelect
-
-// const TrialSearch = () => {
-//   const [selected, setSelected] = useState<string[]>([])
-
-//   const data = [
-//     {
-//       id: 1, title: 'category 1'
-//     },
-//     {
-//       id: 2, title: 'category 2'
-//     }
-//   ]
-
-//   const toggleSelected = (name: string) => {
-//     if (selected.includes(name)) {
-//       const newSelections = selected.filter(selection => selection !== name);
-//       setSelected(newSelections);
-//     } else {
-//       setSelected([...selected, name])
-//     }
-//   }
-
-//   return (
-//     <section>
-//       <p>I am TrialSearch</p>
-//       <MultiSelect
-//         data={data}
-//         selected={selected}
-//         toggleSelected={toggleSelected}
-//       />
-//     </section>
-//   );
-// }
-
-// export default TrialSearch;
