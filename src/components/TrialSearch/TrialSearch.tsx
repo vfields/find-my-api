@@ -84,6 +84,12 @@ const TrialSearch = ({ categories }: TrialSearchProps) => {
     )
   })
 
+  const allOption = (
+    <article>
+      <span onClick={() => setSelectedAll(false)}>All Categories ❌</span>
+    </article>
+  )
+
   return (
     <>
       <div className="select-category" onClick={() => setShowCategories(true)}>
@@ -104,6 +110,7 @@ const TrialSearch = ({ categories }: TrialSearchProps) => {
         {categoryOptions}
       </div>}
       {selectedOptions}
+      {selectedAll && allOption}
     </>
   )
 }
