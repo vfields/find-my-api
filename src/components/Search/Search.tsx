@@ -4,14 +4,14 @@ import MultiSelect from '../MultiSelect/MultiSelect';
 
 interface SearchProps {
   categories: string[];
+  selected: string[];
   keyword: string;
+  setSelected: Dispatch<React.SetStateAction<string[]>>;
   setKeyword: Dispatch<React.SetStateAction<string>>;
 }
 
-const Search = ({ categories, keyword, setKeyword  }: SearchProps) => {
-  const [selected, setSelected] = useState<string[]>([]);
+const Search = ({ categories, selected, keyword, setSelected, setKeyword  }: SearchProps) => {
   const [selectedAll, setSelectedAll] = useState<boolean>(false);
-  // const [keyword, setKeyword] = useState<string>('');
 
   return (
     <form className="api-search-form">

@@ -13,13 +13,14 @@ interface Api {
 
 interface ContainerProps {
   apis: Api[];
+  selected: string[];
   keyword: string;
 }
 
-const Container = ({ apis, keyword }: ContainerProps) => {
+const Container = ({ apis, selected, keyword }: ContainerProps) => {
   let apiList;
 
-  if (!keyword) {
+  if (!keyword && !selected.length) {
     apiList = apis.map((api, index) => {
       return (
         <ApiCard
@@ -29,20 +30,41 @@ const Container = ({ apis, keyword }: ContainerProps) => {
           category={api.Category}
         />
       )
-    })
-  } else if (keyword) {
-    apiList = apis.reduce((acc: JSX.Element[], api, index) => {
+    });
+  } else if (selected.length) {
+    apiList = apis.reduce((acc: Api[], api, index) => {
+      if (selected.includes(api.Category)) {
+        acc.push(api)
+      }
+      return acc;
+    }, [])
+    .reduce((acc: JSX.Element[], api, index) => {
       if (api.API.toLowerCase().includes(keyword.toLowerCase()) || api.Description.toLowerCase().includes(keyword.toLowerCase())) {
+        const uniqueKey = Date.now() + index;
         acc.push(
         <ApiCard
-          key={index}
+          key={uniqueKey}
           title={api.API}
           description={api.Description}
           category={api.Category}
         />)
       }
       return acc;
-    }, [])
+    }, []);
+  } else {
+    apiList = apis.reduce((acc: JSX.Element[], api, index) => {
+      if (api.API.toLowerCase().includes(keyword.toLowerCase()) || api.Description.toLowerCase().includes(keyword.toLowerCase())) {
+        const uniqueKey = Date.now() + index;
+        acc.push(
+        <ApiCard
+          key={uniqueKey}
+          title={api.API}
+          description={api.Description}
+          category={api.Category}
+        />)
+      }
+      return acc;
+    }, []);
   }
 
   return (
@@ -56,3 +78,47 @@ const Container = ({ apis, keyword }: ContainerProps) => {
 }
 
 export default Container;
+
+/* 
+else if (keyword && !selected.length) {
+    apiList = apis.reduce((acc: JSX.Element[], api, index) => {
+      if (api.API.toLowerCase().includes(keyword.toLowerCase()) || api.Description.toLowerCase().includes(keyword.toLowerCase())) {
+        acc.push(
+        <ApiCard
+          key={index}
+          title={api.API}
+          description={api.Description}
+          category={api.Category}
+        />)
+      }
+      return acc;
+    }, []);
+  } else {
+    const catList = apis.reduce((acc: JSX.Element[], api, index) => {
+      if (selected.includes(api.Category)) {
+        acc.push(
+        <ApiCard
+          key={index}
+          title={api.API}
+          description={api.Description}
+          category={api.Category}
+        />)
+      }
+      return acc;
+    }, []);
+    const keywordList = apis.reduce((acc: JSX.Element[], api, index) => {
+      if (api.API.toLowerCase().includes(keyword.toLowerCase()) || api.Description.toLowerCase().includes(keyword.toLowerCase())) {
+        const uniqueKey = Date.now() + index;
+        acc.push(
+        <ApiCard
+          key={uniqueKey}
+          title={api.API}
+          description={api.Description}
+          category={api.Category}
+        />)
+      }
+      return acc;
+    }, []);
+    apiList = [...catList, ...keywordList]
+  }
+*/

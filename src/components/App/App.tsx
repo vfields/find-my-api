@@ -17,6 +17,7 @@ interface Api {
 function App() {
   const [apis, setApis] = useState<Api[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string[]>([]);
   const [keyword, setKeyword] = useState<string>('');
 
   useEffect(() => {
@@ -35,11 +36,14 @@ function App() {
       I am App
       <Search
         categories={categories}
+        selected={selected}
         keyword={keyword}
+        setSelected={setSelected}
         setKeyword={setKeyword}
       />
       <Container
         apis={apis}
+        selected={selected}
         keyword={keyword}
       />
     </main>
