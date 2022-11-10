@@ -35,10 +35,12 @@ function App() {
       <Search
         categories={categories}
       />
-      <h2>{apis.length} APIs Remain</h2>
+      <h2>{apis.length} APIs Remain...</h2>
       <button>Show Me!</button>
       {/* on button click, APIs are displayed! */}
-      <Container />
+      <Container
+        apis={apis}
+      />
     </main>
   );
 }
