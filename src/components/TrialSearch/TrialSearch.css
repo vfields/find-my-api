@@ -1,4 +1,4 @@
-.select-category-btn {
+.select-category {
   border: 0.25rem solid black;
   display: flex;
   justify-content: space-between;
@@ -6,11 +6,11 @@
   width: 25rem;
 }
 
-.select-category-btn img {
+.select-category img {
   height: 1rem;
 }
 
-.select-category-btn:hover {
+.select-category:hover {
   cursor: pointer;
 }
 
@@ -36,4 +36,8 @@
 .categories-option:hover {
   background-color: lightgray;
   cursor: pointer;
+}
+
+.category {
+  border: 0.5rem solid red;
 }
