@@ -1,0 +1,22 @@
+.multi-select-dropdown:hover .dropdown-options { display: block }
+
+.dropdown-selected {
+  border: 0.25rem solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-selected img {
+  height: 1rem;
+}
+
+.dropdown-options {
+  border: 0.25rem solid red;
+  display: none;
+  list-style: none;
+}
+
+.dropdown-option:hover {
+  background-color: grey;
+}
