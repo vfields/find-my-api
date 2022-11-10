@@ -15,8 +15,9 @@ interface Api {
 }
 
 function App() {
-  const [apis, setApis] = useState<Api[]>([])
+  const [apis, setApis] = useState<Api[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
+  const [keyword, setKeyword] = useState<string>('');
 
   useEffect(() => {
     fetch(`https://api.publicapis.org/entries`)
@@ -34,12 +35,12 @@ function App() {
       I am App
       <Search
         categories={categories}
+        keyword={keyword}
+        setKeyword={setKeyword}
       />
-      <h2>{apis.length} APIs Remain...</h2>
-      <button>Show Me!</button>
-      {/* on button click, APIs are displayed! */}
       <Container
         apis={apis}
+        keyword={keyword}
       />
     </main>
   );

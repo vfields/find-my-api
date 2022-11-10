@@ -13,24 +13,43 @@ interface Api {
 
 interface ContainerProps {
   apis: Api[];
+  keyword: string;
 }
 
-const Container = ({ apis }: ContainerProps) => {
+const Container = ({ apis, keyword }: ContainerProps) => {
   let apiList;
 
-  apiList = apis.map((api, index) => {
-    return (
-      <ApiCard
-        key={index}
-        title={api.API}
-        description={api.Description}
-        category={api.Category}
-      />
-    )
-  })
+  if (!keyword) {
+    apiList = apis.map((api, index) => {
+      return (
+        <ApiCard
+          key={index}
+          title={api.API}
+          description={api.Description}
+          category={api.Category}
+        />
+      )
+    })
+  } else if (keyword) {
+    apiList = apis.reduce((acc: JSX.Element[], api, index) => {
+      if (api.API.toLowerCase().includes(keyword.toLowerCase()) || api.Description.toLowerCase().includes(keyword.toLowerCase())) {
+        acc.push(
+        <ApiCard
+          key={index}
+          title={api.API}
+          description={api.Description}
+          category={api.Category}
+        />)
+      }
+      return acc;
+    }, [])
+  }
 
   return (
     <section>
+      {/* <h2>*A number of* APIs Remain...</h2>
+      <button>Show Me!</button> */}
+      {/* on button click, apiList is displayed! */}
       {apiList}
     </section>
   );
