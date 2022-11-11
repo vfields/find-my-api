@@ -1,5 +1,13 @@
 .api-card {
+  align-items: center;
+  background-color: white;
   border: 0.25rem solid green;
-  margin: 0.25rem;
-  width: 25vw;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  text-align: center;
+  width: 20rem;
 }
