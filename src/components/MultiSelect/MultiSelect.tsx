@@ -12,13 +12,13 @@ const MultiSelect = ({ categories, selected, setSelected }: MultiSelectProps) =>
   const [showCategories, setShowCategories] = useState<boolean>(false);
   const ref = useRef<HTMLInputElement | null>(null);
 
-  const toggleSelected = (name: string) => {
-    selected.includes(name) ? removeSelected(name) : setSelected([...selected, name]);
-  }
-
   const removeSelected = (name: string) => {
     const filteredSelected = selected.filter(selection => selection !== name);
     setSelected(filteredSelected);
+  }
+
+  const toggleSelected = (name: string) => {
+    selected.includes(name) ? removeSelected(name) : setSelected([...selected, name]);
   }
 
   // potential to create a small component here
@@ -56,7 +56,7 @@ const MultiSelect = ({ categories, selected, setSelected }: MultiSelectProps) =>
   } else {
     selectText = `${selected.length} Catgories Selected`;
   }
-
+  
   return (
     <>
       <div className="select-category-dropdown" onClick={() => setShowCategories(true)}>

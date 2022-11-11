@@ -31,7 +31,7 @@ const Search = ({ categories, selected, keyword, setSelected, setKeyword  }: Sea
         placeholder="Search By Keyword!"
         onChange={(event) => setKeyword(event.target.value)}
       />
-      <button type="submit" onClick={clearForm}>Clear My Search!</button>
+      <button onClick={clearForm}>Clear My Search!</button>
     </form>
   );
 }
