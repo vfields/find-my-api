@@ -5,7 +5,7 @@ import Search from '../Search/Search';
 import ApiContainer from '../ApiContainer/ApiContainer';
 import SavedContainer from '../SavedContainer/SavedContainer';
 
-interface Api {
+interface FetchedApi {
   API: string;
   Description: string;
   Auth: string;
@@ -13,6 +13,17 @@ interface Api {
   Cors: string;
   Link: string;
   Category: string;
+}
+
+interface Api {
+  id: string;
+  title: string;
+  description: string;
+  auth: string;
+  https: boolean;
+  cors: string;
+  url: string;
+  category: string;
 }
 
 function App() {
@@ -25,7 +36,24 @@ function App() {
   useEffect(() => {
     fetch(`https://api.publicapis.org/entries`)
       .then(response => response.json())
-      .then(data => setApis(data.entries))
+      .then(data => {
+        const cleanedData = data.entries.reduce((acc: Api[], api: FetchedApi) => {
+          const uniqueId = `${api.API}_${api.Description.split(' ').length}_${api.Description.split(' ')[0]}`;
+          const cleanedApi = {
+            id: uniqueId,
+            title: api.API,
+            description: api.Description,
+            auth: api.Auth,
+            https: api.HTTPS,
+            cors: api.Cors,
+            url: api.Link,
+            category: api.Category
+          };
+          acc.push(cleanedApi);
+          return acc;
+        }, [])
+        setApis(cleanedData);
+      })
     
     fetch('https://api.publicapis.org/categories')
       .then(response => response.json())
@@ -33,7 +61,9 @@ function App() {
   }, [])
 
   const addSavedApi = (newApi: Api) => {
-    setSavedApis([...savedApis, newApi])
+    if (!savedApis.includes(newApi)) {
+      setSavedApis([...savedApis, newApi])
+    }
   }
 
   return (
@@ -52,7 +82,9 @@ function App() {
         keyword={keyword}
         addSavedApi={addSavedApi}
       />
-      <SavedContainer />
+      <SavedContainer
+        savedApis={savedApis}
+      />
     </main>
   );
 }

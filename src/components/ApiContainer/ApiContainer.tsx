@@ -2,13 +2,14 @@ import './ApiContainer.css';
 import ApiCard from '../ApiCard/ApiCard';
 
 interface Api {
-  API: string;
-  Description: string;
-  Auth: string;
-  HTTPS: boolean;
-  Cors: string;
-  Link: string;
-  Category: string;
+  id: string;
+  title: string;
+  description: string;
+  auth: string;
+  https: boolean;
+  cors: string;
+  url: string;
+  category: string;
 }
 
 interface ApiContainerProps {
@@ -22,34 +23,27 @@ const ApiContainer = ({ apis, selected, keyword, addSavedApi }: ApiContainerProp
   let apiList = [];
 
   if (!keyword && !selected.length) {
-    apiList = apis.map((api, index) => {
+    apiList = apis.map((api) => {
       return (
         <ApiCard
-          key={index}
-          title={api.API}
-          description={api.Description}
-          category={api.Category}
+          key={api.id}
           api={api}
           addSavedApi={addSavedApi}
         />
       )
     });
   } else if (selected.length) {
-    apiList = apis.reduce((acc: Api[], api, index) => {
-      if (selected.includes(api.Category)) {
+    apiList = apis.reduce((acc: Api[], api) => {
+      if (selected.includes(api.category)) {
         acc.push(api)
       }
       return acc;
     }, [])
-    .reduce((acc: JSX.Element[], api, index) => {
-      if (api.API.toLowerCase().includes(keyword.toLowerCase()) || api.Description.toLowerCase().includes(keyword.toLowerCase())) {
-        const uniqueKey = Date.now() + index;
+    .reduce((acc: JSX.Element[], api) => {
+      if (api.title.toLowerCase().includes(keyword.toLowerCase()) || api.description.toLowerCase().includes(keyword.toLowerCase())) {
         acc.push(
         <ApiCard
-          key={uniqueKey}
-          title={api.API}
-          description={api.Description}
-          category={api.Category}
+          key={api.id}
           api={api}
           addSavedApi={addSavedApi}
         />)
@@ -57,15 +51,11 @@ const ApiContainer = ({ apis, selected, keyword, addSavedApi }: ApiContainerProp
       return acc;
     }, []);
   } else {
-    apiList = apis.reduce((acc: JSX.Element[], api, index) => {
-      if (api.API.toLowerCase().includes(keyword.toLowerCase()) || api.Description.toLowerCase().includes(keyword.toLowerCase())) {
-        const uniqueKey = Date.now() + index;
+    apiList = apis.reduce((acc: JSX.Element[], api) => {
+      if (api.title.toLowerCase().includes(keyword.toLowerCase()) || api.description.toLowerCase().includes(keyword.toLowerCase())) {
         acc.push(
         <ApiCard
-          key={uniqueKey}
-          title={api.API}
-          description={api.Description}
-          category={api.Category}
+          key={api.id}
           api={api}
           addSavedApi={addSavedApi}
         />)
