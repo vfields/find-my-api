@@ -1,9 +1,17 @@
 html {
+  background-color: #080F41;
+  color: white;
   font-family: Verdana, sans-serif;
 }
 
 button {
   font-family: Verdana, sans-serif;
+  transition: 0.5s;
+}
+
+button:hover {
+  cursor: pointer;
+  transition: 0.5s;
 }
 
 ::placeholder {
