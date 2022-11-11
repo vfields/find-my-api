@@ -1,9 +1,10 @@
+import { NavLink } from 'react-router-dom';
 import './Nav.css';
 
 const Nav = () => {
   return (
     <nav className="main-navigation">
-      Home | Saved APIs
+      <NavLink exact to="/home">Home</NavLink> | <NavLink exact to="/saved">Saved APIs</NavLink>
     </nav>
   );
 }

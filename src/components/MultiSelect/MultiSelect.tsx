@@ -3,12 +3,13 @@ import './MultiSelect.css';
 import useOnClickOutside from '../../useOnClickOutside';
 
 interface MultiSelectProps {
+  categoryError: string;
   categories: string[];
   selected: string[];
   setSelected: Dispatch<React.SetStateAction<string[]>>;
 }
 
-const MultiSelect = ({ categories, selected, setSelected }: MultiSelectProps) => {
+const MultiSelect = ({ categoryError, categories, selected, setSelected }: MultiSelectProps) => {
   const [showCategories, setShowCategories] = useState<boolean>(false);
   const ref = useRef<HTMLInputElement | null>(null);
 
@@ -63,7 +64,7 @@ const MultiSelect = ({ categories, selected, setSelected }: MultiSelectProps) =>
         <span className={selected.length ? 'category-selected-text' : 'search-by-category-text'}>{selectText}</span>
         <img src="https://cdn1.iconfinder.com/data/icons/arrows-vol-1-4/24/dropdown_arrow-1024.png" alt="drop down arrow icon" />
       </div>
-      {showCategories && <div ref={ref} className="category-dropdown-display">{categoryOptions}</div>}
+      {showCategories && <div ref={ref} className="category-dropdown-display">{categoryError && categoryError} {categoryOptions}</div>}
       {selectedOptions}
     </>
   )

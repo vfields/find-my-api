@@ -30,7 +30,7 @@ const ApiCard = ({ api, addSavedApi, deleteSavedApi, isApiSaved }: ApiCardProps)
     <article className='api-card' id={id}>
       <h2>Title: {title}</h2>
       <p>Description: {description}</p>
-      <p><a href={url}>Visit API Docs!</a></p>
+      <p><a href={url} target="_blank" rel="noopener">Visit API Docs!</a></p>
       <p>Auth: {authText}</p>
       <p>HTTPS: {httpsText}</p>
       <p>CORS: {cors}</p>

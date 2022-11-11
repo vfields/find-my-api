@@ -16,12 +16,13 @@ interface ApiContainerProps {
   apis: Api[];
   selected: string[];
   keyword: string;
+  loading: () => boolean;
   addSavedApi: (newApi: Api) => void;
   deleteSavedApi: (id: string) => void;
   isApiSaved: (id: string) => boolean;
 }
 
-const ApiContainer = ({ apis, selected, keyword, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
+const ApiContainer = ({ apis, selected, keyword, loading, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
   let apiList = [];
 
   if (!keyword && !selected.length) {
@@ -71,10 +72,12 @@ const ApiContainer = ({ apis, selected, keyword, addSavedApi, deleteSavedApi, is
       return acc;
     }, []);
   }
+  
+  const apiText = loading() ? 'Loading...' : `${apiList.length} APIs Remain...`
 
   return (
     <section className="api-section">
-      <span className="apis-remain-text">{apiList.length} APIs Remain...</span>
+      <span className="apis-remain-text">{apiText}</span>
       <div className="api-grid">
         {apiList}
       </div>
