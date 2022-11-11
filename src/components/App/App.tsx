@@ -61,9 +61,18 @@ function App() {
   }, [])
 
   const addSavedApi = (newApi: Api) => {
-    if (!savedApis.includes(newApi)) {
-      setSavedApis([...savedApis, newApi])
+    if (!savedApis.some(saved => saved.id === newApi.id)) {
+      setSavedApis([...savedApis, newApi]);
     }
+  }
+
+  const deleteSavedApi = (id: string) => {
+    const filteredSavedApis = savedApis.filter(saved => saved.id !== id);
+    setSavedApis(filteredSavedApis);
+  }
+
+  const isApiSaved = (id: string) => {
+    return savedApis.some(saved => saved.id === id) ? true : false;
   }
 
   return (
@@ -81,6 +90,8 @@ function App() {
         selected={selected}
         keyword={keyword}
         addSavedApi={addSavedApi}
+        deleteSavedApi={deleteSavedApi}
+        isApiSaved={isApiSaved}
       />
       <SavedContainer
         savedApis={savedApis}

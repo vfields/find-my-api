@@ -17,9 +17,11 @@ interface ApiContainerProps {
   selected: string[];
   keyword: string;
   addSavedApi: (newApi: Api) => void;
+  deleteSavedApi: (id: string) => void;
+  isApiSaved: (id: string) => boolean;
 }
 
-const ApiContainer = ({ apis, selected, keyword, addSavedApi }: ApiContainerProps) => {
+const ApiContainer = ({ apis, selected, keyword, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
   let apiList = [];
 
   if (!keyword && !selected.length) {
@@ -29,6 +31,8 @@ const ApiContainer = ({ apis, selected, keyword, addSavedApi }: ApiContainerProp
           key={api.id}
           api={api}
           addSavedApi={addSavedApi}
+          deleteSavedApi={deleteSavedApi}
+          isApiSaved={isApiSaved}
         />
       )
     });
@@ -46,6 +50,8 @@ const ApiContainer = ({ apis, selected, keyword, addSavedApi }: ApiContainerProp
           key={api.id}
           api={api}
           addSavedApi={addSavedApi}
+          deleteSavedApi={deleteSavedApi}
+          isApiSaved={isApiSaved}
         />)
       }
       return acc;
@@ -58,6 +64,8 @@ const ApiContainer = ({ apis, selected, keyword, addSavedApi }: ApiContainerProp
           key={api.id}
           api={api}
           addSavedApi={addSavedApi}
+          deleteSavedApi={deleteSavedApi}
+          isApiSaved={isApiSaved}
         />)
       }
       return acc;

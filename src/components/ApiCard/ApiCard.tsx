@@ -13,24 +13,29 @@ interface Api {
 
 
 interface ApiCardProps {
-  addSavedApi: (newApi: Api) => void;
   api: Api;
+  addSavedApi: (newApi: Api) => void;
+  deleteSavedApi: (id: string) => void;
+  isApiSaved: (id: string) => boolean;
 }
 
-const ApiCard = ({ api, addSavedApi }: ApiCardProps) => {
+const ApiCard = ({ api, addSavedApi, deleteSavedApi, isApiSaved }: ApiCardProps) => {
   const { id, title, description, auth, https, cors, url, category } = api;
   const authText = auth ? auth : 'no';
   const httpsText = https ? 'yes' : 'no';
+  const apiStatus = isApiSaved(id);
+  const btnText = apiStatus ? 'Unsave This API' : 'Save This API';
+
   return (
     <article className='api-card' id={id}>
       <h2>Title: {title}</h2>
       <p>Description: {description}</p>
-      <p><a href={url}>Visit Api Docs!</a></p>
+      <p><a href={url}>Visit API Docs!</a></p>
       <p>Auth: {authText}</p>
       <p>HTTPS: {httpsText}</p>
       <p>CORS: {cors}</p>
       <p>Category: {category}</p>
-      <button onClick={() => addSavedApi(api)}>Save Api!</button>
+      <button onClick={apiStatus ? () => deleteSavedApi(id) : () => addSavedApi(api)}>{btnText}</button>
     </article>
   );
 }
