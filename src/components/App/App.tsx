@@ -107,7 +107,7 @@ function App() {
             setSelected={setSelected}
             setKeyword={setKeyword}
           />
-          {error && <h2>{error}</h2>}
+          {error && <h2 className="error">{error}</h2>}
           <ApiContainer
             apis={apis}
             selected={selected}

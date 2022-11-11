@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Nav.css';
 
 const telescope = require('../../assets/telescope.png');
@@ -7,7 +7,7 @@ const Nav = () => {
   return (
     <nav className="main-navigation">
       <div className="logo-container">
-        <img src={telescope} alt="golden outline of a telescope" />
+        <Link to="/"><img src={telescope} alt="golden outline of a telescope" /></Link>
       </div>
       <div className="text-container">
         <span className="logo-text">Find My API</span>

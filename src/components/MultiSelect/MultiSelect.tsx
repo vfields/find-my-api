@@ -26,8 +26,9 @@ const MultiSelect = ({ categoryError, categories, selected, setSelected }: Multi
 
   // potential to create a small component here
   const categoryOptions = categories.map((category, index) => {
+    const uniqueKey = `${category}_${index}`
     return (
-      <label key={index} className="category-option">
+      <label key={uniqueKey} className="category-option" tabIndex={0}>
         <input 
           className="category"
           type="checkbox"
@@ -42,9 +43,10 @@ const MultiSelect = ({ categoryError, categories, selected, setSelected }: Multi
 
   // potential to create another small component here
   const selectedOptions = selected.map((selection, index) => {
+    const uniqueKey = `${selection}_${index}`
     return (
-      <article key={index}>
-        <span onClick={() => removeSelected(selection)}>{selection} ❌</span>
+      <article key={uniqueKey} id={uniqueKey} className="user-category-selection" tabIndex={0} onClick={() => removeSelected(selection)}>
+        {selection} ✘
       </article>
     )
   })
@@ -62,12 +64,14 @@ const MultiSelect = ({ categoryError, categories, selected, setSelected }: Multi
 
   return (
     <>
-      <div className="select-category-dropdown" onClick={() => setShowCategories(true)}>
+      <div tabIndex={0} className="select-category-dropdown" onClick={() => setShowCategories(true)}>
         <span className={selected.length ? 'category-selected-text' : 'search-by-category-text'}>{selectText}</span>
         <img src={dropdownIcon} alt="drop down arrow icon" />
       </div>
       {showCategories && <div ref={ref} className="category-dropdown-display">{categoryError && categoryError} {categoryOptions}</div>}
-      {selectedOptions}
+      <div className="selected-options-container">
+        {selectedOptions}
+      </div>
     </>
   )
 }
