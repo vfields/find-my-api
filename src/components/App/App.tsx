@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Nav from '../Nav/Nav';
 import Search from '../Search/Search';
@@ -78,27 +79,33 @@ function App() {
   return (
     <main>
       <Nav />
-      <Search
-        categories={categories}
-        selected={selected}
-        keyword={keyword}
-        setSelected={setSelected}
-        setKeyword={setKeyword}
-      />
-      <ApiContainer
-        apis={apis}
-        selected={selected}
-        keyword={keyword}
-        addSavedApi={addSavedApi}
-        deleteSavedApi={deleteSavedApi}
-        isApiSaved={isApiSaved}
-      />
-      <SavedContainer
-        savedApis={savedApis}
-        addSavedApi={addSavedApi}
-        deleteSavedApi={deleteSavedApi}
-        isApiSaved={isApiSaved}
-      />
+      <Switch>
+        <Route exact path="/">
+          <Search
+            categories={categories}
+            selected={selected}
+            keyword={keyword}
+            setSelected={setSelected}
+            setKeyword={setKeyword}
+          />
+          <ApiContainer
+            apis={apis}
+            selected={selected}
+            keyword={keyword}
+            addSavedApi={addSavedApi}
+            deleteSavedApi={deleteSavedApi}
+            isApiSaved={isApiSaved}
+          />
+        </Route>
+        <Route exact path="/saved">
+          <SavedContainer
+            savedApis={savedApis}
+            addSavedApi={addSavedApi}
+            deleteSavedApi={deleteSavedApi}
+            isApiSaved={isApiSaved}
+          />
+        </Route>
+      </Switch>
     </main>
   );
 }
