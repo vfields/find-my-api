@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import './App.css';
+import { getApiData } from '../../apiCalls';
 import Nav from '../Nav/Nav';
 import Search from '../Search/Search';
 import ApiContainer from '../ApiContainer/ApiContainer';
 import SavedContainer from '../SavedContainer/SavedContainer';
+import { createSemanticDiagnosticsBuilderProgram } from 'typescript';
 
 interface FetchedApi {
   API: string;
@@ -29,14 +31,15 @@ interface Api {
 
 function App() {
   const [apis, setApis] = useState<Api[]>([]);
+  const [error, setError] = useState<string>('');
+  const [categoryError, setCategoryError] = useState<string>('');
   const [categories, setCategories] = useState<string[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
   const [keyword, setKeyword] = useState<string>('');
   const [savedApis, setSavedApis] = useState<Api[]>([]);
 
   useEffect(() => {
-    fetch(`https://api.publicapis.org/entries`)
-      .then(response => response.json())
+    getApiData('entries')
       .then(data => {
         const cleanedData = data.entries.reduce((acc: Api[], api: FetchedApi) => {
           const uniqueId = `${api.API}_${api.Description.split(' ').length}_${api.Description.split(' ')[0]}`;
@@ -54,11 +57,16 @@ function App() {
           return acc;
         }, [])
         setApis(cleanedData);
+        setError('');
       })
-    
-    fetch('https://api.publicapis.org/categories')
-      .then(response => response.json())
-      .then(data => setCategories(data.categories))
+      .catch(error => setError(`Oops, that's a ${error.message}! Something went wrong loading the APIs... please try again later.`))
+
+    getApiData('categories')
+      .then(data => {
+        setCategories(data.categories)
+        setCategoryError('')
+      })
+      .catch(error => setCategoryError(`Oops, that's a ${error.message}! Something went wrong loading the categories... please try again later.`))
   }, [])
 
   const addSavedApi = (newApi: Api) => {
@@ -82,12 +90,14 @@ function App() {
         <Route exact path="/home">
           <Nav />
           <Search
+            categoryError={categoryError}
             categories={categories}
             selected={selected}
             keyword={keyword}
             setSelected={setSelected}
             setKeyword={setKeyword}
           />
+          {error && <h2>{error}</h2>}
           <ApiContainer
             apis={apis}
             selected={selected}

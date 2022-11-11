@@ -3,6 +3,7 @@ import './Search.css';
 import MultiSelect from '../MultiSelect/MultiSelect';
 
 interface SearchProps {
+  categoryError: string;
   categories: string[];
   selected: string[];
   keyword: string;
@@ -10,7 +11,7 @@ interface SearchProps {
   setKeyword: Dispatch<React.SetStateAction<string>>;
 }
 
-const Search = ({ categories, selected, keyword, setSelected, setKeyword  }: SearchProps) => {
+const Search = ({ categoryError, categories, selected, keyword, setSelected, setKeyword  }: SearchProps) => {
   const clearForm = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     setSelected([]);
@@ -25,6 +26,7 @@ const Search = ({ categories, selected, keyword, setSelected, setKeyword  }: Sea
   return (
     <form className="api-search-form">
       <MultiSelect
+        categoryError={categoryError}
         categories={categories}
         selected={selected}
         setSelected={setSelected}
