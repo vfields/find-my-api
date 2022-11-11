@@ -68,10 +68,11 @@ const Container = ({ apis, selected, keyword }: ContainerProps) => {
   }
 
   return (
-    <section>
-      <h2>{apiList.length} APIs Remain...</h2>
-      {/* on button click, apiList is displayed! */}
-      {apiList}
+    <section className="api-section">
+      <span className="apis-remain-text">{apiList.length} APIs Remain...</span>
+      <div className="api-grid">
+        {apiList}
+      </div>
     </section>
   );
 }

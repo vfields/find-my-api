@@ -25,13 +25,14 @@ const Search = ({ categories, selected, keyword, setSelected, setKeyword  }: Sea
         setSelected={setSelected}
       />
       <input
+        className="keyword-input"
         type="text"
         name="keyword"
         value={keyword}
         placeholder="Search By Keyword!"
         onChange={(event) => setKeyword(event.target.value)}
       />
-      <button onClick={clearForm}>Clear My Search!</button>
+      <button className="clear-search-btn" onClick={clearForm}>Clear My Search!</button>
     </form>
   );
 }

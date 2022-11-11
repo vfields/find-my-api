@@ -56,11 +56,11 @@ const MultiSelect = ({ categories, selected, setSelected }: MultiSelectProps) =>
   } else {
     selectText = `${selected.length} Catgories Selected`;
   }
-  
+
   return (
     <>
       <div className="select-category-dropdown" onClick={() => setShowCategories(true)}>
-        <span className="select-text">{selectText}</span>
+        <span className={selected.length ? 'category-selected-text' : 'search-by-category-text'}>{selectText}</span>
         <img src="https://cdn1.iconfinder.com/data/icons/arrows-vol-1-4/24/dropdown_arrow-1024.png" alt="drop down arrow icon" />
       </div>
       {showCategories && <div ref={ref} className="category-dropdown-display">{categoryOptions}</div>}
