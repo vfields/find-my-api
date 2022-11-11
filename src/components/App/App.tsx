@@ -6,7 +6,6 @@ import Nav from '../Nav/Nav';
 import Search from '../Search/Search';
 import ApiContainer from '../ApiContainer/ApiContainer';
 import SavedContainer from '../SavedContainer/SavedContainer';
-import { createSemanticDiagnosticsBuilderProgram } from 'typescript';
 
 interface FetchedApi {
   API: string;
