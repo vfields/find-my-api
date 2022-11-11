@@ -1,5 +1,45 @@
 .main-navigation {
-  border: 0.25rem solid purple;
-  margin-bottom: 1rem;
-  text-align: right;
+  background-color: #36418A;
+  border: 0.35rem solid #717FD0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+  margin-top: -0.5rem;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.main-navigation img {
+  height: 12vh;
+  margin: 1rem;
+}
+
+.text-container {
+  margin: 1rem;
+  text-align: center;
+}
+
+.logo-text {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.inactive {
+  color: white;
+  padding: .25rem;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.inactive:hover {
+  background-color: #080F41;
+}
+
+.active {
+  background-color: #080F41;
+  color: #DCB33C;
 }
