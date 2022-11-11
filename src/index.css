@@ -1,3 +1,12 @@
+html {
+  font-family: Verdana, sans-serif;
+}
+
+button {
+  font-family: Verdana, sans-serif;
+}
+
 ::placeholder {
   color: gray;
+  font-size: 1.1rem;
 }
