@@ -33,7 +33,6 @@ function App() {
   return (
     <main>
       <Nav />
-      I am App
       <Search
         categories={categories}
         selected={selected}

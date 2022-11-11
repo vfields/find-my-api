@@ -17,6 +17,11 @@ const Search = ({ categories, selected, keyword, setSelected, setKeyword  }: Sea
     setKeyword('');
   }
 
+  let disableBtn = true;
+  if (keyword || selected.length) {
+    disableBtn = false;
+  }
+
   return (
     <form className="api-search-form">
       <MultiSelect
@@ -32,7 +37,7 @@ const Search = ({ categories, selected, keyword, setSelected, setKeyword  }: Sea
         placeholder="Search By Keyword!"
         onChange={(event) => setKeyword(event.target.value)}
       />
-      <button className="clear-search-btn" onClick={clearForm}>Clear My Search!</button>
+      <button disabled={disableBtn} className="clear-search-btn" onClick={clearForm}>Clear My Search!</button>
     </form>
   );
 }

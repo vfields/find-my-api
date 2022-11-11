@@ -2,8 +2,8 @@ import './Nav.css';
 
 const Nav = () => {
   return (
-    <nav>
-      I am Nav
+    <nav className="main-navigation">
+      Home | Saved APIs
     </nav>
   );
 }
