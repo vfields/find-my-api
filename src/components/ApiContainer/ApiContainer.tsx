@@ -1,4 +1,4 @@
-import './Container.css';
+import './ApiContainer.css';
 import ApiCard from '../ApiCard/ApiCard';
 
 interface Api {
@@ -11,13 +11,14 @@ interface Api {
   Category: string;
 }
 
-interface ContainerProps {
+interface ApiContainerProps {
   apis: Api[];
   selected: string[];
   keyword: string;
+  addSavedApi: (newApi: Api) => void;
 }
 
-const Container = ({ apis, selected, keyword }: ContainerProps) => {
+const ApiContainer = ({ apis, selected, keyword, addSavedApi }: ApiContainerProps) => {
   let apiList = [];
 
   if (!keyword && !selected.length) {
@@ -28,6 +29,8 @@ const Container = ({ apis, selected, keyword }: ContainerProps) => {
           title={api.API}
           description={api.Description}
           category={api.Category}
+          api={api}
+          addSavedApi={addSavedApi}
         />
       )
     });
@@ -47,6 +50,8 @@ const Container = ({ apis, selected, keyword }: ContainerProps) => {
           title={api.API}
           description={api.Description}
           category={api.Category}
+          api={api}
+          addSavedApi={addSavedApi}
         />)
       }
       return acc;
@@ -61,6 +66,8 @@ const Container = ({ apis, selected, keyword }: ContainerProps) => {
           title={api.API}
           description={api.Description}
           category={api.Category}
+          api={api}
+          addSavedApi={addSavedApi}
         />)
       }
       return acc;
@@ -77,4 +84,4 @@ const Container = ({ apis, selected, keyword }: ContainerProps) => {
   );
 }
 
-export default Container;
+export default ApiContainer;

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Nav from '../Nav/Nav';
 import Search from '../Search/Search';
-import Container from '../Container/Container';
+import ApiContainer from '../ApiContainer/ApiContainer';
+import SavedContainer from '../SavedContainer/SavedContainer';
 
 interface Api {
   API: string;
@@ -19,6 +20,7 @@ function App() {
   const [categories, setCategories] = useState<string[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
   const [keyword, setKeyword] = useState<string>('');
+  const [savedApis, setSavedApis] = useState<Api[]>([]);
 
   useEffect(() => {
     fetch(`https://api.publicapis.org/entries`)
@@ -30,6 +32,10 @@ function App() {
       .then(data => setCategories(data.categories))
   }, [])
 
+  const addSavedApi = (newApi: Api) => {
+    setSavedApis([...savedApis, newApi])
+  }
+
   return (
     <main>
       <Nav />
@@ -40,11 +46,13 @@ function App() {
         setSelected={setSelected}
         setKeyword={setKeyword}
       />
-      <Container
+      <ApiContainer
         apis={apis}
         selected={selected}
         keyword={keyword}
+        addSavedApi={addSavedApi}
       />
+      <SavedContainer />
     </main>
   );
 }
