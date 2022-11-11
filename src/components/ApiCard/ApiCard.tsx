@@ -36,7 +36,7 @@ const ApiCard = ({ api, addSavedApi, deleteSavedApi, isApiSaved }: ApiCardProps)
       <p><span className="bold">HTTPS:</span> {httpsText}</p>
       <p><span className="bold">CORS:</span> {cors}</p>
       <p><span className="bold">Category:</span> {category}</p>
-      <button onClick={apiStatus ? () => deleteSavedApi(id) : () => addSavedApi(api)}>{btnText}</button>
+      <button className="manage-save-btn" onClick={apiStatus ? () => deleteSavedApi(id) : () => addSavedApi(api)}>{btnText}</button>
     </article>
   );
 }
