@@ -83,6 +83,13 @@ function App() {
     return savedApis.some(saved => saved.id === id) ? true : false;
   }
 
+  const loading = () => {
+    if (apis.length === 0 && !error) {
+      return true
+    }
+    return false;
+  }
+
   return (
     <main>
       <Switch>
@@ -101,6 +108,7 @@ function App() {
             apis={apis}
             selected={selected}
             keyword={keyword}
+            loading={loading}
             addSavedApi={addSavedApi}
             deleteSavedApi={deleteSavedApi}
             isApiSaved={isApiSaved}
