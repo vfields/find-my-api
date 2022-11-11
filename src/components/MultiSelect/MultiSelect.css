@@ -1,0 +1,42 @@
+.select-category-dropdown {
+  border: 0.25rem solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem;
+  width: 45vw;
+}
+
+.select-category-dropdown img {
+  height: 1rem;
+}
+
+.select-category-dropdown:hover {
+  cursor: pointer;
+}
+
+.category-dropdown-display {
+  border: 0.1rem solid red;
+  padding: 0.25rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  height: 25vh;
+  width: 45vw;
+  overflow: auto;
+}
+
+.category-option {
+  display: block;
+}
+
+.category-option:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.category {
+  border: 0.5rem solid red;
+}
+
+.search-by-category-text {
+  color: gray;
+}

@@ -1,0 +1,21 @@
+.api-search-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.keyword-input {
+  border: 0.25rem solid black;
+  padding: 0.25rem;
+  margin-top: 0.25rem;
+  width: 45vw;
+}
+
+.keyword-input::placeholder {
+  color: gray;
+}
+
+.clear-search-btn {
+  margin-top: 0.25rem;
+}
