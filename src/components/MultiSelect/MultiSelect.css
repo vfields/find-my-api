@@ -1,5 +1,6 @@
 .select-category-dropdown {
-  border: 0.25rem solid black;
+  background-color: white;
+  border: 0.25rem solid #AF7D30;
   display: flex;
   justify-content: space-between;
   padding: 0.25rem;
@@ -37,6 +38,8 @@
   border: 0.5rem solid red;
 }
 
-.search-by-category-text {
-  color: gray;
+.search-by-category-text,
+.category-selected-text {
+  color: #080F41;
+  font-size: 1rem;
 }
