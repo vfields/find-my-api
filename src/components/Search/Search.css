@@ -12,10 +12,6 @@
   width: 45vw;
 }
 
-.keyword-input::placeholder {
-  color: gray;
-}
-
 .clear-search-btn {
   margin-top: 0.25rem;
 }
