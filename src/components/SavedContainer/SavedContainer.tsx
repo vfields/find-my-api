@@ -33,7 +33,7 @@ const SavedContainer = ({ savedApis, addSavedApi, deleteSavedApi, isApiSaved }: 
   })
   return (
     <section className="saved-apis-section">
-      {!savedApisList.length && <h2>You haven't saved any APIs, yet!</h2>}
+      {!savedApisList.length && <h2 className="no-saved-text">You haven't saved any APIs, yet!</h2>}
       <div className="saved-api-grid">
         {savedApisList}
       </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import './App.css';
 import { getApiData } from '../../apiCalls';
+import LandingPage from '../LandingPage/LandingPage';
 import Nav from '../Nav/Nav';
 import Search from '../Search/Search';
 import ApiContainer from '../ApiContainer/ApiContainer';
@@ -93,6 +94,9 @@ function App() {
   return (
     <main>
       <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
         <Route exact path="/home">
           <Nav />
           <Search
@@ -103,7 +107,7 @@ function App() {
             setSelected={setSelected}
             setKeyword={setKeyword}
           />
-          {error && <h2>{error}</h2>}
+          {error && <h2 className="error">{error}</h2>}
           <ApiContainer
             apis={apis}
             selected={selected}

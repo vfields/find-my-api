@@ -77,9 +77,9 @@ const ApiContainer = ({ apis, selected, keyword, loading, addSavedApi, deleteSav
 
   return (
     <section className="api-section">
-      <span className="apis-remain-text">{apiText}</span>
-      <div className="api-grid">
-        {apiList}
+      <h1 className="apis-remain-text">{apiText}</h1>
+      <div className="api-container">
+      {apiList}
       </div>
     </section>
   );

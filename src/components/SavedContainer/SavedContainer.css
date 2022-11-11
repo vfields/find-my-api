@@ -1,5 +1,11 @@
 .saved-api-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  height: 50vh;
+  justify-content: space-around;
+}
+
+.no-saved-text {
+  margin-top: 3rem;
+  text-align: center;
 }

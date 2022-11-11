@@ -6,12 +6,42 @@
 }
 
 .keyword-input {
-  border: 0.25rem solid black;
+  border: 0.25rem solid #AF7D30;
+  font-family: Verdana, sans-serif;
+  font-size: 0.9rem;
   padding: 0.25rem;
-  margin-top: 0.25rem;
+  margin-top: 1rem;
+  height: 1.5rem;
   width: 45vw;
 }
 
 .clear-search-btn {
-  margin-top: 0.25rem;
+  background-color: #717FD0;
+  border: 0.25rem solid #36418A;
+  border-radius: 1rem;
+  font-size: 1rem;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.clear-search-btn:hover {
+  background-color: #36418A;
+  border: 0.25rem solid #AF7D30;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.clear-search-btn:disabled {
+  background-color: gray;
+  border: 0.25rem solid darkgray;
+  opacity: 0.5;
+}
+
+.clear-search-btn:disabled:hover {
+  background-color: gray;
+  border: 0.25rem solid darkgray;
+  cursor: default;
+  padding: 0.5rem 1.5rem;
+  opacity: 0.5;
 }
