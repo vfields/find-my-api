@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, NavLink } from 'react-router-dom';
 import './App.css';
 import Nav from '../Nav/Nav';
 import Search from '../Search/Search';
@@ -78,9 +78,9 @@ function App() {
 
   return (
     <main>
-      <Nav />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/home">
+          <Nav />
           <Search
             categories={categories}
             selected={selected}
@@ -98,6 +98,7 @@ function App() {
           />
         </Route>
         <Route exact path="/saved">
+          <Nav />
           <SavedContainer
             savedApis={savedApis}
             addSavedApi={addSavedApi}
