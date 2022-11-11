@@ -95,6 +95,9 @@ function App() {
       />
       <SavedContainer
         savedApis={savedApis}
+        addSavedApi={addSavedApi}
+        deleteSavedApi={deleteSavedApi}
+        isApiSaved={isApiSaved}
       />
     </main>
   );

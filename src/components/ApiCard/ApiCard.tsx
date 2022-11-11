@@ -24,7 +24,7 @@ const ApiCard = ({ api, addSavedApi, deleteSavedApi, isApiSaved }: ApiCardProps)
   const authText = auth ? auth : 'no';
   const httpsText = https ? 'yes' : 'no';
   const apiStatus = isApiSaved(id);
-  const btnText = apiStatus ? 'Unsave This API' : 'Save This API';
+  const btnText = apiStatus ? 'Remove From Saved' : 'Save This API';
 
   return (
     <article className='api-card' id={id}>
