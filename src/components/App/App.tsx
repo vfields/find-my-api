@@ -7,6 +7,7 @@ import Nav from '../Nav/Nav';
 import Search from '../Search/Search';
 import ApiContainer from '../ApiContainer/ApiContainer';
 import SavedContainer from '../SavedContainer/SavedContainer';
+import BadUrl from '../BadUrl/BadUrl';
 
 interface FetchedApi {
   API: string;
@@ -139,6 +140,7 @@ function App() {
             isApiSaved={isApiSaved}
           />
         </Route>
+        <Route component={BadUrl} />
       </Switch>
     </main>
   );
