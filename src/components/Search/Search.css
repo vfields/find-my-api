@@ -15,7 +15,8 @@
   width: 45vw;
 }
 
-.auth-radio-container {
+.auth-radio-container,
+.cors-radio-container {
   font-size: 1.1rem;
   display: flex;
   justify-content: center;
@@ -26,11 +27,14 @@
   width: 45vw;
 }
 
-.auth-req-text {
+.auth-req-text,
+.cors-req-text {
+  color: #DCB33C;
   font-weight: 600;
 }
 
-.auth-radio {
+.auth-radio,
+.cors-radio {
   margin-left: 0.5rem;
 }
 

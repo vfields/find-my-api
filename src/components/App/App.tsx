@@ -36,9 +36,8 @@ function App() {
   const [categories, setCategories] = useState<string[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
   const [keyword, setKeyword] = useState<string>('');
-
-  const [auth, setAuth] = useState<string>("0");
-
+  const [auth, setAuth] = useState<string>('0');
+  const [cors, setCors] = useState<string>('0');
   const [savedApis, setSavedApis] = useState<Api[]>([]);
 
   useEffect(() => {
@@ -108,9 +107,11 @@ function App() {
             selected={selected}
             keyword={keyword}
             auth={auth}
+            cors={cors}
             setSelected={setSelected}
             setKeyword={setKeyword}
             setAuth={setAuth}
+            setCors={setCors}
           />
           {error && <h2 className="error">{error}</h2>}
           <ApiContainer
@@ -118,6 +119,7 @@ function App() {
             selected={selected}
             keyword={keyword}
             auth={auth}
+            cors={cors}
             loading={loading}
             addSavedApi={addSavedApi}
             deleteSavedApi={deleteSavedApi}

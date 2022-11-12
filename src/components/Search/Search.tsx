@@ -8,21 +8,24 @@ interface SearchProps {
   selected: string[];
   keyword: string;
   auth: string;
+  cors: string;
   setSelected: Dispatch<React.SetStateAction<string[]>>;
   setKeyword: Dispatch<React.SetStateAction<string>>;
   setAuth: Dispatch<React.SetStateAction<string>>;
+  setCors: Dispatch<React.SetStateAction<string>>;
 }
 
-const Search = ({ categoryError, categories, selected, keyword, auth, setSelected, setKeyword, setAuth  }: SearchProps) => {
+const Search = ({ categoryError, categories, selected, keyword, auth, cors, setSelected, setKeyword, setAuth, setCors }: SearchProps) => {
   const clearForm = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     setSelected([]);
     setKeyword('');
     setAuth('0');
+    setCors('0');
   }
 
   let disableBtn = true;
-  if (keyword || selected.length || auth !== "0") {
+  if (keyword || selected.length || auth !== '0' || cors !=='0' ) {
     disableBtn = false;
   }
 
@@ -70,6 +73,37 @@ const Search = ({ categoryError, categories, selected, keyword, auth, setSelecte
             value="0"
             checked={auth === "0"}
             onChange={(event) => setAuth(event.target.value)}
+          /> Either
+        </label>
+      </div>
+      <br />
+      <div className="cors-radio-container">
+        <span className="cors-req-text">CORS Required:</span>
+        <label className="cors-radio">
+          <input 
+            type="radio"
+            name="cors"
+            value="1"
+            checked={cors === "1"}
+            onChange={(event) => setCors(event.target.value)}
+          /> Yes
+        </label>
+        <label className="cors-radio">
+        <input 
+          type="radio"
+          name="cors"
+          value="2"
+          checked={cors === "2"}
+          onChange={(event) => setCors(event.target.value)}
+        /> No
+        </label>
+        <label className="cors-radio">
+          <input 
+            type="radio"
+            name="cors"
+            value="0"
+            checked={cors === "0"}
+            onChange={(event) => setCors(event.target.value)}
           /> Either
         </label>
       </div>
