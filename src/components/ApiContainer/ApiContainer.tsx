@@ -16,64 +16,94 @@ interface ApiContainerProps {
   apis: Api[];
   selected: string[];
   keyword: string;
+  auth: string;
+  https: string;
+  cors: string;
   loading: () => boolean;
   addSavedApi: (newApi: Api) => void;
   deleteSavedApi: (id: string) => void;
   isApiSaved: (id: string) => boolean;
 }
 
-const ApiContainer = ({ apis, selected, keyword, loading, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
+const ApiContainer = ({ apis, selected, keyword, auth, https, cors, loading, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
   let apiList = [];
 
-  if (!keyword && !selected.length) {
-    apiList = apis.map((api) => {
-      return (
-        <ApiCard
-          key={api.id}
-          api={api}
-          addSavedApi={addSavedApi}
-          deleteSavedApi={deleteSavedApi}
-          isApiSaved={isApiSaved}
-        />
-      )
-    });
-  } else if (selected.length) {
-    apiList = apis.reduce((acc: Api[], api) => {
-      if (selected.includes(api.category)) {
-        acc.push(api)
+  const checkKeyword = (word: string, list: Api[]) => {
+    return list.reduce((acc: Api[], api: Api) => {
+      if (api.title.toLowerCase().includes(keyword.toLowerCase()) || api.description.toLowerCase().includes(keyword.toLowerCase())) {
+        acc.push(api);
       }
       return acc;
     }, [])
-    .reduce((acc: JSX.Element[], api) => {
-      if (api.title.toLowerCase().includes(keyword.toLowerCase()) || api.description.toLowerCase().includes(keyword.toLowerCase())) {
-        acc.push(
-        <ApiCard
-          key={api.id}
-          api={api}
-          addSavedApi={addSavedApi}
-          deleteSavedApi={deleteSavedApi}
-          isApiSaved={isApiSaved}
-        />)
-      }
-      return acc;
-    }, []);
-  } else {
-    apiList = apis.reduce((acc: JSX.Element[], api) => {
-      if (api.title.toLowerCase().includes(keyword.toLowerCase()) || api.description.toLowerCase().includes(keyword.toLowerCase())) {
-        acc.push(
-        <ApiCard
-          key={api.id}
-          api={api}
-          addSavedApi={addSavedApi}
-          deleteSavedApi={deleteSavedApi}
-          isApiSaved={isApiSaved}
-        />)
-      }
-      return acc;
-    }, []);
   }
-  
-  const apiText = loading() ? 'Loading...' : `${apiList.length} APIs Remain...`
+
+  const checkCategories = (categoryList: string[], list: Api[]) => {
+    if (categoryList.length) {
+      return list.reduce((acc: Api[], api: Api) => {
+        if (selected.includes(api.category)) {
+          acc.push(api)
+        }
+        return acc;
+      }, [])
+    } else {
+      return list;
+    }
+  }
+
+  const checkAuth = (value: string, list: Api[]) => {
+    if (value === "0") {
+      return list;
+    } else if (value === "1") {
+      return list.filter(api => api.auth)
+    } else {
+      return list.filter(api => !api.auth)
+    }
+  }
+
+  const checkHttps = (value: string, list: Api[]) => {
+    if (value === "0") {
+      return list;
+    } else if (value === "1") {
+      return list.filter(api => api.https)
+    } else {
+      return list.filter(api => !api.https)
+    }
+  }
+
+  const checkCors = (value: string, list: Api[]) => {
+    if (value === "0") {
+      return list;
+    } else if (value === "1") {
+      return list.filter(api => api.cors === "yes")
+    } else {
+      return list.filter(api => api.cors === "no")
+    }
+  }
+
+  const checkAll = (word: string, categoryList: string[], authValue: string, allApis: Api[]) => {
+    let displayApis = checkKeyword(keyword, apis);
+    displayApis = checkCategories(selected, displayApis);
+    displayApis = checkAuth(auth, displayApis);
+    displayApis = checkHttps(https, displayApis);
+    displayApis = checkCors(cors, displayApis);
+    return displayApis;
+  }
+
+  apiList = checkAll(keyword, selected, auth, apis).map((api) => {
+    return (
+      <ApiCard
+        key={api.id}
+        api={api}
+        addSavedApi={addSavedApi}
+        deleteSavedApi={deleteSavedApi}
+        isApiSaved={isApiSaved}
+      />
+    )
+  })
+
+  const apiSValue = apiList.length === 1 ? '' : 's';
+  const remainSValue = apiSValue ? '' : 's';
+  const apiText = loading() ? 'Loading...' : `${apiList.length} API${apiSValue} Remain${remainSValue}...`;
 
   return (
     <section className="api-section">
