@@ -37,6 +37,7 @@ function App() {
   const [selected, setSelected] = useState<string[]>([]);
   const [keyword, setKeyword] = useState<string>('');
   const [auth, setAuth] = useState<string>('0');
+  const [https, setHttps] = useState<string>('0');
   const [cors, setCors] = useState<string>('0');
   const [savedApis, setSavedApis] = useState<Api[]>([]);
 
@@ -108,9 +109,11 @@ function App() {
             keyword={keyword}
             auth={auth}
             cors={cors}
+            https={https}
             setSelected={setSelected}
             setKeyword={setKeyword}
             setAuth={setAuth}
+            setHttps={setHttps}
             setCors={setCors}
           />
           {error && <h2 className="error">{error}</h2>}
@@ -120,6 +123,7 @@ function App() {
             keyword={keyword}
             auth={auth}
             cors={cors}
+            https={https}
             loading={loading}
             addSavedApi={addSavedApi}
             deleteSavedApi={deleteSavedApi}

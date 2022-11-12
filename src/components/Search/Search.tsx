@@ -9,23 +9,26 @@ interface SearchProps {
   keyword: string;
   auth: string;
   cors: string;
+  https: string;
   setSelected: Dispatch<React.SetStateAction<string[]>>;
   setKeyword: Dispatch<React.SetStateAction<string>>;
   setAuth: Dispatch<React.SetStateAction<string>>;
+  setHttps: Dispatch<React.SetStateAction<string>>;
   setCors: Dispatch<React.SetStateAction<string>>;
 }
 
-const Search = ({ categoryError, categories, selected, keyword, auth, cors, setSelected, setKeyword, setAuth, setCors }: SearchProps) => {
+const Search = ({ categoryError, categories, selected, keyword, auth, https, cors, setSelected, setKeyword, setAuth, setHttps, setCors }: SearchProps) => {
   const clearForm = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     setSelected([]);
     setKeyword('');
     setAuth('0');
+    setHttps('0');
     setCors('0');
   }
 
   let disableBtn = true;
-  if (keyword || selected.length || auth !== '0' || cors !=='0' ) {
+  if (keyword || selected.length || auth !== '0' || cors !=='0' || https !== '0' ) {
     disableBtn = false;
   }
 
@@ -45,9 +48,8 @@ const Search = ({ categoryError, categories, selected, keyword, auth, cors, setS
         placeholder="Search By Keyword!"
         onChange={(event) => setKeyword(event.target.value)}
       />
-      <br />
       <div className="auth-radio-container">
-        <span className="auth-req-text">Authentication Required:</span>
+        <span className="auth-req-text">Authentication:</span>
         <label className="auth-radio">
           <input 
             type="radio"
@@ -76,9 +78,40 @@ const Search = ({ categoryError, categories, selected, keyword, auth, cors, setS
           /> Either
         </label>
       </div>
-      <br />
+      
+      <div className="https-radio-container">
+        <span className="https-req-text">HTTPS:</span>
+        <label className="https-radio">
+          <input 
+            type="radio"
+            name="https"
+            value="1"
+            checked={https === "1"}
+            onChange={(event) => setHttps(event.target.value)}
+          /> Yes
+        </label>
+        <label className="https-radio">
+        <input 
+          type="radio"
+          name="https"
+          value="2"
+          checked={https === "2"}
+          onChange={(event) => setHttps(event.target.value)}
+        /> No
+        </label>
+        <label className="https-radio">
+          <input 
+            type="radio"
+            name="https"
+            value="0"
+            checked={https === "0"}
+            onChange={(event) => setHttps(event.target.value)}
+          /> Either
+        </label>
+      </div>
+      
       <div className="cors-radio-container">
-        <span className="cors-req-text">CORS Required:</span>
+        <span className="cors-req-text">CORS:</span>
         <label className="cors-radio">
           <input 
             type="radio"

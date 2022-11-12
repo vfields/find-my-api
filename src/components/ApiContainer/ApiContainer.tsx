@@ -17,6 +17,7 @@ interface ApiContainerProps {
   selected: string[];
   keyword: string;
   auth: string;
+  https: string;
   cors: string;
   loading: () => boolean;
   addSavedApi: (newApi: Api) => void;
@@ -24,7 +25,7 @@ interface ApiContainerProps {
   isApiSaved: (id: string) => boolean;
 }
 
-const ApiContainer = ({ apis, selected, keyword, auth, cors, loading, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
+const ApiContainer = ({ apis, selected, keyword, auth, https, cors, loading, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
   let apiList = [];
 
   const checkKeyword = (word: string, list: Api[]) => {
@@ -59,6 +60,16 @@ const ApiContainer = ({ apis, selected, keyword, auth, cors, loading, addSavedAp
     }
   }
 
+  const checkHttps = (value: string, list: Api[]) => {
+    if (value === "0") {
+      return list;
+    } else if (value === "1") {
+      return list.filter(api => api.https)
+    } else {
+      return list.filter(api => !api.https)
+    }
+  }
+
   const checkCors = (value: string, list: Api[]) => {
     if (value === "0") {
       return list;
@@ -73,6 +84,7 @@ const ApiContainer = ({ apis, selected, keyword, auth, cors, loading, addSavedAp
     let displayApis = checkKeyword(keyword, apis);
     displayApis = checkCategories(selected, displayApis);
     displayApis = checkAuth(auth, displayApis);
+    displayApis = checkHttps(https, displayApis);
     displayApis = checkCors(cors, displayApis);
     return displayApis;
   }
