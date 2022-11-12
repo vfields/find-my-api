@@ -18,10 +18,11 @@ const Search = ({ categoryError, categories, selected, keyword, auth, setSelecte
     event.preventDefault();
     setSelected([]);
     setKeyword('');
+    setAuth('0');
   }
 
   let disableBtn = true;
-  if (keyword || selected.length) {
+  if (keyword || selected.length || auth !== "0") {
     disableBtn = false;
   }
 
@@ -42,34 +43,36 @@ const Search = ({ categoryError, categories, selected, keyword, auth, setSelecte
         onChange={(event) => setKeyword(event.target.value)}
       />
       <br />
-      Authentication: 
-      <label>
+      <div className="auth-radio-container">
+        <span className="auth-req-text">Authentication Required:</span>
+        <label className="auth-radio">
+          <input 
+            type="radio"
+            name="authentication"
+            value="1"
+            checked={auth === "1"}
+            onChange={(event) => setAuth(event.target.value)}
+          /> Yes
+        </label>
+        <label className="auth-radio">
         <input 
           type="radio"
           name="authentication"
-          value="1"
-          checked={auth === "1"}
+          value="2"
+          checked={auth === "2"}
           onChange={(event) => setAuth(event.target.value)}
-        /> Yes
-      </label>
-      <label>
-       <input 
-        type="radio"
-        name="authentication"
-        value="2"
-        checked={auth === "2"}
-        onChange={(event) => setAuth(event.target.value)}
-      /> No
-      </label>
-      <label>
-        <input 
-          type="radio"
-          name="authentication"
-          value="0"
-          checked={auth === "0"}
-          onChange={(event) => setAuth(event.target.value)}
-        /> Either
-      </label>
+        /> No
+        </label>
+        <label className="auth-radio">
+          <input 
+            type="radio"
+            name="authentication"
+            value="0"
+            checked={auth === "0"}
+            onChange={(event) => setAuth(event.target.value)}
+          /> Either
+        </label>
+      </div>
       <button disabled={disableBtn} className="clear-search-btn" onClick={clearForm}>Clear My Search!</button>
     </form>
   );
