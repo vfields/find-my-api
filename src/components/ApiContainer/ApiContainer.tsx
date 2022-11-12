@@ -16,13 +16,14 @@ interface ApiContainerProps {
   apis: Api[];
   selected: string[];
   keyword: string;
+  auth: string;
   loading: () => boolean;
   addSavedApi: (newApi: Api) => void;
   deleteSavedApi: (id: string) => void;
   isApiSaved: (id: string) => boolean;
 }
 
-const ApiContainer = ({ apis, selected, keyword, loading, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
+const ApiContainer = ({ apis, selected, keyword, auth, loading, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
   let apiList = [];
 
   if (!keyword && !selected.length) {
@@ -71,6 +72,13 @@ const ApiContainer = ({ apis, selected, keyword, loading, addSavedApi, deleteSav
       }
       return acc;
     }, []);
+  }
+
+  // start here tomorrow!
+  const checkAuth = (value: string, list: Api[]) => {
+    if (value === "0") {
+      // checkAuth before you reduce!
+    }
   }
   
   const apiText = loading() ? 'Loading...' : `${apiList.length} APIs Remain...`
