@@ -91,7 +91,7 @@ This final solo project was assigned during the third module of Turing's Front-E
 I am proud that I was able to create more advanced user search options! Being able to do so successfully, specifically being able to display a category dropdown with pop-up elements that represent each category selected, led me to learning about `useRef`, and I am happy that I was able to teach myself and implement that concept. I also feel that attempting a larger application gave me a greater appreciation for just how many components a true application might have—which helps me see even more value in TypeScript.
 <p>
 <b>Challenges:</b><br>
-In the same vein, cracking the logic for a multi-input search and figuring out <code>useRef</code> proved to be the most challenging pieces of the project.
+In the same vein, cracking the logic for a multi-input search and figuring out <code>useRef</code> proved to be the most challenging pieces of the project. I also feel I could have made even smaller, more reusable search components.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
