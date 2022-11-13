@@ -76,4 +76,4 @@ const MultiSelect = ({ categoryError, categories, selected, setSelected }: Multi
   )
 }
 
-export default MultiSelect
+export default MultiSelect;

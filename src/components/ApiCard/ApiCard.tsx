@@ -1,23 +1,5 @@
+import { ApiCardProps } from '../../model';
 import './ApiCard.css';
-
-interface Api {
-  id: string;
-  title: string;
-  description: string;
-  auth: string;
-  https: boolean;
-  cors: string;
-  url: string;
-  category: string;
-}
-
-
-interface ApiCardProps {
-  api: Api;
-  addSavedApi: (newApi: Api) => void;
-  deleteSavedApi: (id: string) => void;
-  isApiSaved: (id: string) => boolean;
-}
 
 const ApiCard = ({ api, addSavedApi, deleteSavedApi, isApiSaved }: ApiCardProps) => {
   const { id, title, description, auth, https, cors, url, category } = api;
