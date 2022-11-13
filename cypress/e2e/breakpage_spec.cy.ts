@@ -11,7 +11,7 @@ describe('breakpage', () => {
     cy.get('.main-navigation').should('exist');
     cy.get('.break-header').should('exist').contains(`Bootcamps are hard. It's okay to take a break!`);
     cy.get('.img-dog-display').should('exist');
-    cy.get('p').should('exist').contains('We hope these pups lift your spirits. You got this!');
+    cy.get('.encourage-msg').should('exist').contains('We hope these pups lift your spirits. You got this!');
     cy.get('.new-dog-btn').should('exist').contains('New Doggo!');
   });
 

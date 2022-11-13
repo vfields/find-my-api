@@ -28,7 +28,7 @@ const BreakPage = () => {
         <DogDisplay
           url={dogUrl} 
         />
-        <p>We hope these pups lift your spirits. You got this!</p>
+        <p className="encourage-msg">We hope these pups lift your spirits. You got this!</p>
         <button className='new-dog-btn' onClick={handleClick}>New Doggo!</button>
       </div>
     </section>

@@ -36,8 +36,10 @@ describe('navigation bar', () => {
   });
 })
 
+// test the rest of the home page functionality
+
 describe('home page', () => {
   it('passes', () => {
-    cy.visit('https://example.cypress.io')
+    cy.visit('http://localhost:3000/home')
   })
 })
