@@ -1,0 +1,28 @@
+.break-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.break-section img, video {
+  border: 0.5rem solid #DCB33C;
+  width: 50vw;
+}
+
+.new-dog-btn {
+  background-color: #717FD0;
+  border: 0.25rem solid #36418A;
+  border-radius: 1rem;
+  font-size: 1rem;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  margin: 0.75rem;
+}
+
+.new-dog-btn:hover {
+  background-color: #36418A;
+  border: 0.25rem solid #AF7D30;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
