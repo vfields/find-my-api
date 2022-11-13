@@ -1,23 +1,6 @@
+import { SavedContainerProps } from '../../model';
 import './SavedContainer.css';
-import ApiCard from '../ApiCard/ApiCard'
-
-interface Api {
-  id: string;
-  title: string;
-  description: string;
-  auth: string;
-  https: boolean;
-  cors: string;
-  url: string;
-  category: string;
-}
-
-interface SavedContainerProps {
-  savedApis: Api[];
-  addSavedApi: (newApi: Api) => void;
-  deleteSavedApi: (id: string) => void;
-  isApiSaved: (id: string) => boolean;
-}
+import ApiCard from '../ApiCard/ApiCard';
 
 const SavedContainer = ({ savedApis, addSavedApi, deleteSavedApi, isApiSaved }: SavedContainerProps) => {
   const savedApisList = savedApis.map(api => {
@@ -30,11 +13,12 @@ const SavedContainer = ({ savedApis, addSavedApi, deleteSavedApi, isApiSaved }: 
         isApiSaved={isApiSaved}
     />
     )
-  })
+  });
+
   return (
-    <section className="saved-apis-section">
-      {!savedApisList.length && <h2 className="no-saved-text">You haven't saved any APIs, yet!</h2>}
-      <div className="saved-api-grid">
+    <section className='saved-apis-section'>
+      {!savedApisList.length && <h2 className='no-saved-text'>You haven't saved any APIs, yet!</h2>}
+      <div className='saved-api-grid'>
         {savedApisList}
       </div>
     </section>

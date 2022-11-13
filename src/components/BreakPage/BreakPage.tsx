@@ -21,14 +21,14 @@ const BreakPage = () => {
   }
 
   return (
-    <section className="break-section">
-      <h1 className="break-header">Bootcamps are hard. It's okay to take a break!</h1>
-      {error && <h3 className="error">{error}</h3>}
+    <section className='break-section'>
+      <h1 className='break-header'>Bootcamps are hard. It's okay to take a break!</h1>
+      {error && <h3 className='error'>{error}</h3>}
       <DogDisplay
         url={dogUrl} 
       />
       <p>We hope these pups lift your spirits. You got this!</p>
-      <button className="new-dog-btn" onClick={handleClick}>New Doggo!</button>
+      <button className='new-dog-btn' onClick={handleClick}>New Doggo!</button>
     </section>
   );
 }

@@ -22,10 +22,7 @@
   transition: 0.5s;
 }
 
-.bad-url a:link {
-  color: #AF7D30;
-}
-
+.bad-url a:link,
 .bad-url a:visited {
   color: #DCB33C;
 }
