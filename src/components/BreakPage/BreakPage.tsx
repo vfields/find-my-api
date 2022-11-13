@@ -1,46 +1,34 @@
 import { useState, useEffect } from 'react';
-// import { Link, NavLink } from 'react-router-dom';
 import './BreakPage.css';
-
-// const telescope = require('../../assets/telescope.png');
+import { getDog } from '../../apiCalls';
+import DogDisplay from '../DogDisplay/DogDisplay';
 
 const BreakPage = () => {
   const [dogUrl, setDogUrl] = useState<string>('');
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
-    fetch (`https://random.dog/woof.json`)
-      .then(response => response.json())
-      .then(data => setDogUrl(data.url))
+    handleClick();
   }, [])
 
-
-  // this can be its own component
-  const dogDisplay = (url: string) => {
-    if (url.slice(-3).toLowerCase() === 'mp4') {
-      return (
-        <video controls autoPlay muted>
-          <source src={url} type="video/mp4" />
-        </video>
-      )
-    } else {
-      return (
-        <img src={url} />
-      )
-    }
-  }
-
-  const getDog = () => {
-    return fetch (`https://random.dog/woof.json`)
-    .then(response => response.json())
-    .then(data => setDogUrl(data.url))
+  const handleClick = () => {
+    getDog()
+      .then(data => {
+        setDogUrl(data.url);
+        setError('');
+      })
+      .catch(error => setError(`Uh oh, that's a ${error.message}! We're sorry, we're having trouble displaying the doggos. Please try again!`))
   }
 
   return (
     <section className="break-section">
-      <h1>Bootcamps are hard. It's okay to take a break!</h1>
-      {dogDisplay(dogUrl)}
+      <h1 className="break-header">Bootcamps are hard. It's okay to take a break!</h1>
+      {error && <h3 className="error">{error}</h3>}
+      <DogDisplay
+        url={dogUrl} 
+      />
       <p>We hope these pups lift your spirits. You got this!</p>
-      <button className="new-dog-btn" onClick={getDog}>New Doggo!</button>
+      <button className="new-dog-btn" onClick={handleClick}>New Doggo!</button>
     </section>
   );
 }
