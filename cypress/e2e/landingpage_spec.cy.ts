@@ -1,6 +1,6 @@
 import cypress from "cypress";
 
-describe('landing page', () => {
+describe('Landing page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/');
   })

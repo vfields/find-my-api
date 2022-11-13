@@ -37,6 +37,7 @@ interface SearchInputs {
 
 export interface ApiContainerProps extends SaveApiFunctions, SearchInputs {
   apis: Api[];
+  error: string;
   loading: () => boolean;
 }
 

@@ -1,6 +1,6 @@
 import cypress from "cypress";
 
-describe('breakpage', () => {
+describe('Break page', () => {
   it('should display all expected elements to the DOM on page load', () => {
     cy.intercept('GET', 'https://random.dog/woof.json', {
       statusCode: 200,

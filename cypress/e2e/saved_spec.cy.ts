@@ -1,6 +1,6 @@
 import cypress from 'cypress';
 
-describe('saved page', () => {
+describe('Saved page', () => {
   beforeEach(() => {
     cy.intercept('GET', 'https://api.publicapis.org/entries', {
       statusCode: 200,
@@ -29,11 +29,6 @@ describe('saved page', () => {
     cy.get('#AdoptAPet_6_Resource').find('.manage-save-btn').click();
     cy.get('#AdoptAPet_6_Resource').should('not.exist');
   });
-
-  it('button text should update according to whether or not API is saved', () => {
-    cy.get('#AdoptAPet_6_Resource').find('.manage-save-btn').contains('Save This API').click();
-    cy.get('#AdoptAPet_6_Resource').find('.manage-save-btn').contains('Remove From Saved');
-  })
 
   it('user should be able to search saved APIs by keyword', () => {
     cy.get('#AdoptAPet_6_Resource').find('.manage-save-btn').click();

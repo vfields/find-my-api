@@ -2,7 +2,7 @@ import { Api, ApiContainerProps } from '../../model';
 import './ApiContainer.css';
 import ApiCard from '../ApiCard/ApiCard';
 
-const ApiContainer = ({ apis, selected, keyword, auth, https, cors, loading, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
+const ApiContainer = ({ apis, selected, keyword, auth, https, cors, error, loading, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
   let apiList = [];
 
   const checkKeyword = (word: string, list: Api[]) => {
@@ -80,11 +80,14 @@ const ApiContainer = ({ apis, selected, keyword, auth, https, cors, loading, add
 
   const apiSValue = apiList.length === 1 ? '' : 's';
   const remainSValue = apiSValue ? '' : 's';
-  const apiText = loading() ? 'Loading...' : `${apiList.length} API${apiSValue} Remain${remainSValue}...`;
+  let apiText = loading() ? 'Loading...' : `${apiList.length} API${apiSValue} Remain${remainSValue}...`;
+  if (apis.length && !apiList.length) {
+    apiText = "No APIs match your search!"
+  }
 
   return (
     <section className='api-section'>
-      <h1 className='apis-remain-text'>{apiText}</h1>
+      <h1 className={error ? 'no-display' : 'apis-remain-text'}>{apiText}</h1>
       <div className='api-container'>
         {apiList}
       </div>
