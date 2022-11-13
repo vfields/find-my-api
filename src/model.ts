@@ -21,28 +21,37 @@ export interface Api {
   category: string;
 }
 
-export interface ApiContainerProps {
-  apis: Api[];
+interface SaveApiFunctions {
+  addSavedApi: (newApi: Api) => void;
+  deleteSavedApi: (id: string) => void;
+  isApiSaved: (id: string) => boolean;
+}
+
+interface SearchInputs {
   selected: string[];
   keyword: string;
   auth: string;
   https: string;
   cors: string;
+}
+
+export interface ApiContainerProps extends SaveApiFunctions, SearchInputs {
+  apis: Api[];
   loading: () => boolean;
-  addSavedApi: (newApi: Api) => void;
-  deleteSavedApi: (id: string) => void;
-  isApiSaved: (id: string) => boolean;
 }
 
-export interface ApiCardProps {
+export interface ApiCardProps extends SaveApiFunctions {
   api: Api;
-  addSavedApi: (newApi: Api) => void;
-  deleteSavedApi: (id: string) => void;
-  isApiSaved: (id: string) => boolean;
 }
 
-export interface DogDisplayProps {
-  url: string;
+export interface SearchProps extends SearchInputs {
+  categoryError: string;
+  categories: string[];
+  setSelected: Dispatch<React.SetStateAction<string[]>>;
+  setKeyword: Dispatch<React.SetStateAction<string>>;
+  setAuth: Dispatch<React.SetStateAction<string>>;
+  setHttps: Dispatch<React.SetStateAction<string>>;
+  setCors: Dispatch<React.SetStateAction<string>>;
 }
 
 export interface MultiSelectProps {
@@ -52,24 +61,10 @@ export interface MultiSelectProps {
   setSelected: Dispatch<React.SetStateAction<string[]>>;
 }
 
-export interface SavedContainerProps {
+export interface SavedContainerProps extends SaveApiFunctions {
   savedApis: Api[];
-  addSavedApi: (newApi: Api) => void;
-  deleteSavedApi: (id: string) => void;
-  isApiSaved: (id: string) => boolean;
 }
 
-export interface SearchProps {
-  categoryError: string;
-  categories: string[];
-  selected: string[];
-  keyword: string;
-  auth: string;
-  cors: string;
-  https: string;
-  setSelected: Dispatch<React.SetStateAction<string[]>>;
-  setKeyword: Dispatch<React.SetStateAction<string>>;
-  setAuth: Dispatch<React.SetStateAction<string>>;
-  setHttps: Dispatch<React.SetStateAction<string>>;
-  setCors: Dispatch<React.SetStateAction<string>>;
+export interface DogDisplayProps {
+  url: string;
 }
