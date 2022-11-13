@@ -1,0 +1,28 @@
+.bad-url {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.bad-url img {
+  margin: 1rem;
+  width: 25vw;
+}
+
+.bad-url a {
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.bad-url a:hover {
+  letter-spacing: 0.1rem;
+  transition: 0.5s;
+}
+
+.bad-url a:link,
+.bad-url a:visited {
+  color: #DCB33C;
+}

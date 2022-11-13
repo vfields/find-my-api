@@ -1,39 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
+import { Api, FetchedApi } from '../../model';
 import { getApiData } from '../../apiCalls';
 import LandingPage from '../LandingPage/LandingPage';
 import Nav from '../Nav/Nav';
+import BreakPage from '../BreakPage/BreakPage';
 import Search from '../Search/Search';
 import ApiContainer from '../ApiContainer/ApiContainer';
 import SavedContainer from '../SavedContainer/SavedContainer';
-
-interface FetchedApi {
-  API: string;
-  Description: string;
-  Auth: string;
-  HTTPS: boolean;
-  Cors: string;
-  Link: string;
-  Category: string;
-}
-
-interface Api {
-  id: string;
-  title: string;
-  description: string;
-  auth: string;
-  https: boolean;
-  cors: string;
-  url: string;
-  category: string;
-}
+import BadUrl from '../BadUrl/BadUrl';
 
 function App() {
   const [apis, setApis] = useState<Api[]>([]);
   const [error, setError] = useState<string>('');
-  const [categoryError, setCategoryError] = useState<string>('');
   const [categories, setCategories] = useState<string[]>([]);
+  const [categoryError, setCategoryError] = useState<string>('');
   const [selected, setSelected] = useState<string[]>([]);
   const [keyword, setKeyword] = useState<string>('');
   const [auth, setAuth] = useState<string>('0');
@@ -66,8 +48,8 @@ function App() {
 
     getApiData('categories')
       .then(data => {
-        setCategories(data.categories)
-        setCategoryError('')
+        setCategories(data.categories);
+        setCategoryError('');
       })
       .catch(error => setCategoryError(`Oops, that's a ${error.message}! Something went wrong loading the categories... please try again later.`))
   }, [])
@@ -89,7 +71,7 @@ function App() {
 
   const loading = () => {
     if (apis.length === 0 && !error) {
-      return true
+      return true;
     }
     return false;
   }
@@ -97,10 +79,10 @@ function App() {
   return (
     <main>
       <Switch>
-        <Route exact path="/">
+        <Route exact path='/'>
           <LandingPage />
         </Route>
-        <Route exact path="/home">
+        <Route exact path='/home'>
           <Nav />
           <Search
             categoryError={categoryError}
@@ -116,7 +98,7 @@ function App() {
             setHttps={setHttps}
             setCors={setCors}
           />
-          {error && <h2 className="error">{error}</h2>}
+          {error && <h2 className='error'>{error}</h2>}
           <ApiContainer
             apis={apis}
             selected={selected}
@@ -130,7 +112,7 @@ function App() {
             isApiSaved={isApiSaved}
           />
         </Route>
-        <Route exact path="/saved">
+        <Route exact path='/saved'>
           <Nav />
           <SavedContainer
             savedApis={savedApis}
@@ -139,6 +121,11 @@ function App() {
             isApiSaved={isApiSaved}
           />
         </Route>
+        <Route exact path='/break'>
+          <Nav />
+          <BreakPage />
+        </Route>
+        <Route component={BadUrl} />
       </Switch>
     </main>
   );

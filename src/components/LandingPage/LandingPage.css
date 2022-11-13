@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .landing-page img {
@@ -11,30 +12,32 @@
 
 .header-text {
   font-size: 3.5rem;
-  text-align: center;
 }
 
 .tag-text {
   font-size: 1.5rem;
-  text-align: center;
 }
 
-.sub-tag-text {
-  text-align: center;
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.get-started-btn {
-  background-color: #717FD0;
-  border: 0.5rem solid #36418A;
+.get-started-btn,
+.break-btn {
+  background-color: #36418A;
+  border: 0.25rem solid #717FD0;
   border-radius: 1rem;
   font-size: 1.5rem;
   color: white;
   padding: 1rem 2.5rem;
-  margin-top: 1rem;
+  margin: 1rem;
 }
 
-.get-started-btn:hover {
-  background-color: #36418A;
-  border: 0.5rem solid #AF7D30;
-  padding: 1.25rem 3.5rem;
+.get-started-btn:hover,
+.break-btn:hover {
+  background-color: black;
+  border: 0.25rem solid #AF7D30;
+  padding: 1rem 3.5rem;
 }

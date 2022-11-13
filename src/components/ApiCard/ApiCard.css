@@ -14,6 +14,7 @@
 
 .api-card a {
   font-weight: 700;
+  padding: 0.25rem;
   text-decoration: none;
   transition: 0.5s;
 }
@@ -23,12 +24,10 @@
   transition: 0.5s;
 }
 
-.api-card a:link {
-  color: #AF7D30;
-}
-
-.api-card a:visited {
-  color: #717FD0;
+.api-card a:link,
+.api-card a:visited
+ {
+  color: #36418A;
 }
 
 .description {
@@ -40,8 +39,8 @@
 }
 
 .manage-save-btn {
-  background-color: #717FD0;
-  border: 0.25rem solid #36418A;
+  background-color: #36418A;
+  border: 0.25rem solid #717FD0;
   border-radius: 1rem;
   font-size: 1rem;
   color: white;
@@ -50,7 +49,7 @@
 }
 
 .manage-save-btn:hover {
-  background-color: #36418A;
+  background-color: black;
   border: 0.25rem solid #AF7D30;
   padding-right: 2rem;
   padding-left: 2rem;

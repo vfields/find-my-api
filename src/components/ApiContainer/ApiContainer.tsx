@@ -1,29 +1,6 @@
+import { Api, ApiContainerProps } from '../../model';
 import './ApiContainer.css';
 import ApiCard from '../ApiCard/ApiCard';
-
-interface Api {
-  id: string;
-  title: string;
-  description: string;
-  auth: string;
-  https: boolean;
-  cors: string;
-  url: string;
-  category: string;
-}
-
-interface ApiContainerProps {
-  apis: Api[];
-  selected: string[];
-  keyword: string;
-  auth: string;
-  https: string;
-  cors: string;
-  loading: () => boolean;
-  addSavedApi: (newApi: Api) => void;
-  deleteSavedApi: (id: string) => void;
-  isApiSaved: (id: string) => boolean;
-}
 
 const ApiContainer = ({ apis, selected, keyword, auth, https, cors, loading, addSavedApi, deleteSavedApi, isApiSaved }: ApiContainerProps) => {
   let apiList = [];
@@ -34,14 +11,14 @@ const ApiContainer = ({ apis, selected, keyword, auth, https, cors, loading, add
         acc.push(api);
       }
       return acc;
-    }, [])
+    }, []);
   }
 
   const checkCategories = (categoryList: string[], list: Api[]) => {
     if (categoryList.length) {
       return list.reduce((acc: Api[], api: Api) => {
         if (selected.includes(api.category)) {
-          acc.push(api)
+          acc.push(api);
         }
         return acc;
       }, [])
@@ -51,32 +28,32 @@ const ApiContainer = ({ apis, selected, keyword, auth, https, cors, loading, add
   }
 
   const checkAuth = (value: string, list: Api[]) => {
-    if (value === "0") {
+    if (value === '0') {
       return list;
-    } else if (value === "1") {
-      return list.filter(api => api.auth)
+    } else if (value === '1') {
+      return list.filter(api => api.auth);
     } else {
-      return list.filter(api => !api.auth)
+      return list.filter(api => !api.auth);
     }
   }
 
   const checkHttps = (value: string, list: Api[]) => {
-    if (value === "0") {
+    if (value === '0') {
       return list;
-    } else if (value === "1") {
-      return list.filter(api => api.https)
+    } else if (value === '1') {
+      return list.filter(api => api.https);
     } else {
-      return list.filter(api => !api.https)
+      return list.filter(api => !api.https);
     }
   }
 
   const checkCors = (value: string, list: Api[]) => {
-    if (value === "0") {
+    if (value === '0') {
       return list;
-    } else if (value === "1") {
-      return list.filter(api => api.cors === "yes")
+    } else if (value === '1') {
+      return list.filter(api => api.cors === 'yes');
     } else {
-      return list.filter(api => api.cors === "no")
+      return list.filter(api => api.cors === 'no');
     }
   }
 
@@ -99,17 +76,17 @@ const ApiContainer = ({ apis, selected, keyword, auth, https, cors, loading, add
         isApiSaved={isApiSaved}
       />
     )
-  })
+  });
 
   const apiSValue = apiList.length === 1 ? '' : 's';
   const remainSValue = apiSValue ? '' : 's';
   const apiText = loading() ? 'Loading...' : `${apiList.length} API${apiSValue} Remain${remainSValue}...`;
 
   return (
-    <section className="api-section">
-      <h1 className="apis-remain-text">{apiText}</h1>
-      <div className="api-container">
-      {apiList}
+    <section className='api-section'>
+      <h1 className='apis-remain-text'>{apiText}</h1>
+      <div className='api-container'>
+        {apiList}
       </div>
     </section>
   );
