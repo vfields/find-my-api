@@ -32,20 +32,20 @@
 </details>
 
 ## About The Project
-A few sentences about the project.
+Bootcamps are hard enough, finding an API should be easier! This responsive and accessible application allows you to search over 1,000 free and public APIs by keyword, category, authentication requirements, CORs policies, and more. Find an API you like? Save it while you continue you search. Need a break? Take one with adorable dog pictures and videos. You got this!
 <br>
 
-<h3 align="center">Landing Page:</h3>
-<p align="center"><img width="500" src="" alt=""></p>
-
 <h3 align="center">Advanced Search Options:</h3>
-<p align="center"><img width="500" src="" alt=""></p>
+<p align="center"><img width="500" src="https://media.giphy.com/media/N7jOjCRDT65F7t9ChD/giphy.gif" alt="A gif preview of Find My API's advanced search options"></p>
 
 <h3 align="center">Saved APIs:</h3>
-<p align="center"><img width="500" src="" alt=""></p>
+<p align="center"><img width="500" src="https://media.giphy.com/media/QxkSP2G7bWDCiTKAtt/giphy.gif" alt="A gif preview of Find My API's save user selected APIs feature"></p>
 
 <h3 align="center">Take A Break:</h3>
-<p align="center"><img width="500" src="" alt=""></p>
+<p align="center"><img width="500" src="https://media.giphy.com/media/tfCWh67FSSDmq1K6m0/giphy.gif" alt="A gif preview of Find My API's take a break feature, displaying random dog videos and images"></p>
+
+<h3 align="center">Bad URL Handling:</h3>
+<p align="center"><img width="500" src="https://media.giphy.com/media/ehhng3mNjNR8RPE7pa/giphy.gif" alt="A gif preview of Find My API's bad url handling"></p>
 
 <br />
 This final solo project was assigned during the third module of Turing's Front-End Engineering program, about 16-17 weeks into its students learning how to code. The details of this project are outlined in <a href="https://frontend.turing.edu/projects/module-3/showcase.html">this</a> project spec.
