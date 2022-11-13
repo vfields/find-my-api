@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+.no-display {
+  display: none;
+}
+
 .new-dog-btn {
   background-color: #36418A;
   border: 0.25rem solid #717FD0;

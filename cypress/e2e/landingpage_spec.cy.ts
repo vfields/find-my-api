@@ -10,8 +10,8 @@ describe('landing page', () => {
     cy.get('.header-text').should('exist').contains('Find My API');
     cy.get('.tag-text').should('exist').contains('Bootcamps are hard enough.Finding an API should be easier!');
     cy.get('.sub-tag-text').should('exist').contains('Search over 1,000+ free, public APIs by keyword, category, authentication requirements, and more.');
-    cy.get('.get-started-btn').should('exist');
-    cy.get('.break-btn').should('exist');
+    cy.get('.get-started-btn').should('exist').contains('Get Started');
+    cy.get('.break-btn').should('exist').contains('Take A Break');
   });
 
   it('user should be able to navigate to search page', () => {

@@ -17,18 +17,20 @@ const BreakPage = () => {
         setDogUrl(data.url);
         setError('');
       })
-      .catch(error => setError(`Uh oh, that's a ${error.message}! We're sorry, we're having trouble displaying the doggos. Please try again!`))
+      .catch(error => setError(`Uh oh, that's a ${error.message}! We're sorry, we're having trouble displaying the doggos. Please refresh and try again!`))
   }
 
   return (
     <section className='break-section'>
-      <h1 className='break-header'>Bootcamps are hard. It's okay to take a break!</h1>
       {error && <h3 className='error'>{error}</h3>}
-      <DogDisplay
-        url={dogUrl} 
-      />
-      <p>We hope these pups lift your spirits. You got this!</p>
-      <button className='new-dog-btn' onClick={handleClick}>New Doggo!</button>
+      <div className={error ? 'no-display': 'display'}>
+        <h1 className='break-header'>Bootcamps are hard. It's okay to take a break!</h1>
+        <DogDisplay
+          url={dogUrl} 
+        />
+        <p>We hope these pups lift your spirits. You got this!</p>
+        <button className='new-dog-btn' onClick={handleClick}>New Doggo!</button>
+      </div>
     </section>
   );
 }
