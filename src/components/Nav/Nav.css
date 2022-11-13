@@ -44,3 +44,14 @@
   background-color: #080F41;
   color: #DCB33C;
 }
+
+@media screen and (max-width: 27.5em) {
+  .main-navigation img {
+    height: 8.5vh;
+    margin: 0.25rem;
+  }
+
+  .logo-text {
+    display: none;
+  }
+}
