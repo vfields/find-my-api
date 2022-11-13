@@ -60,7 +60,7 @@ const MultiSelect = ({ categoryError, categories, selected, setSelected }: Multi
         <span className={selected.length ? 'category-selected-text' : 'search-by-category-text'}>{selectText}</span>
         <img src={dropdownIcon} alt='drop down arrow icon' />
       </div>
-      {showCategories && <div ref={ref} className='category-dropdown-display'>{categoryError && categoryError} {categoryOptions}</div>}
+      {showCategories && <div ref={ref} className='category-dropdown-display'>{categoryError && <p className="error">{categoryError}</p>} {categoryOptions}</div>}
       <div className='selected-options-container'>
         {selectedOptions}
       </div>

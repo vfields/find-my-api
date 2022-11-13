@@ -10,14 +10,14 @@ const ApiCard = ({ api, addSavedApi, deleteSavedApi, isApiSaved }: ApiCardProps)
 
   return (
     <article className='api-card' id={id}>
-      <h2>{title}</h2>
-      <span className='description'>{description}</span>
+      <h2 className='card-title'>{title}</h2>
+      <span className='card-description'>{description}</span>
       <br />
-      <a href={url} target='_blank' rel='noopener'>Visit API Docs!</a>
-      <p><span className='bold'>Authentication:</span> {authText}</p>
-      <p><span className='bold'>HTTPS:</span> {httpsText}</p>
-      <p><span className='bold'>CORS:</span> {cors}</p>
-      <p><span className='bold'>Category:</span> {category}</p>
+      <a href={url} target='_blank' rel='noopener' className="card-link">Visit API Docs!</a>
+      <p className="card-auth"><span className='bold'>Authentication:</span> {authText}</p>
+      <p className="card-https"><span className='bold'>HTTPS:</span> {httpsText}</p>
+      <p className="card-cors"><span className='bold'>CORS:</span> {cors}</p>
+      <p className="card-category"><span className='bold'>Category:</span> {category}</p>
       <button className='manage-save-btn' onClick={apiStatus ? () => deleteSavedApi(id) : () => addSavedApi(api)}>{btnText}</button>
     </article>
   );

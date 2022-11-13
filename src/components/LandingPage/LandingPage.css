@@ -41,3 +41,12 @@
   border: 0.25rem solid #AF7D30;
   padding: 1rem 3.5rem;
 }
+
+@media screen and (max-width: 35em) {
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

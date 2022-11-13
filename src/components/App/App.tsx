@@ -106,6 +106,7 @@ function App() {
             auth={auth}
             cors={cors}
             https={https}
+            error={error}
             loading={loading}
             addSavedApi={addSavedApi}
             deleteSavedApi={deleteSavedApi}

@@ -71,3 +71,21 @@
   padding: 0.5rem 1.5rem;
   opacity: 0.5;
 }
+
+@media screen and (max-width: 50em) {
+  .keyword-input {
+    width: 60vw;
+  }
+
+  .auth-radio-container,
+  .cors-radio-container,
+  .https-radio-container {
+    width: 100vw;
+  }
+
+  .auth-radio,
+  .cors-radio,
+  .https-radio {
+    margin-left: 0.25rem;
+  }
+}
