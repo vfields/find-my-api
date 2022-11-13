@@ -76,6 +76,7 @@ This final solo project was assigned during the third module of Turing's Front-E
 
 - [ ] Add a search bar to the favorites page so that users can search through their favorited APIs
 - [ ] Add user ability to add comments to saved APIs
+- [ ] Break MultiSelect component down into smaller components
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
