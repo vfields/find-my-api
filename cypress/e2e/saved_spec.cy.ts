@@ -26,9 +26,14 @@ describe('saved page', () => {
   it('user should be able to delete a saved API', () => {
     cy.get('#AdoptAPet_6_Resource').find('.manage-save-btn').click();
     cy.get('.saved').click();
-    cy.get('#AdoptAPet_6_Resource').find('.manage-save-btn').contains('Remove From Saved').click();
+    cy.get('#AdoptAPet_6_Resource').find('.manage-save-btn').click();
     cy.get('#AdoptAPet_6_Resource').should('not.exist');
   });
+
+  it('button text should update according to whether or not API is saved', () => {
+    cy.get('#AdoptAPet_6_Resource').find('.manage-save-btn').contains('Save This API').click();
+    cy.get('#AdoptAPet_6_Resource').find('.manage-save-btn').contains('Remove From Saved');
+  })
 
   it('user should be able to search saved APIs by keyword', () => {
     cy.get('#AdoptAPet_6_Resource').find('.manage-save-btn').click();
@@ -49,4 +54,4 @@ describe('saved page', () => {
     cy.get('#AdoptAPet_6_Resource').should('not.exist');
     cy.get('.no-match-msg').should('exist').contains('None of your saved APIs contain those keywords... try searching something different!');
   });
-})
+});

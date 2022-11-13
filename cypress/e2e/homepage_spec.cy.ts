@@ -34,12 +34,14 @@ describe('navigation bar', () => {
     cy.get('.logo-img').click();
     cy.url().should('eq', 'http://localhost:3000/');
   });
-})
+});
 
 // test the rest of the home page functionality
+// general search bar features, clear my search btn
+// search by category: pop up elements display
 
 describe('home page', () => {
   it('passes', () => {
     cy.visit('http://localhost:3000/home')
-  })
-})
+  });
+});
