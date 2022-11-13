@@ -41,7 +41,7 @@ const SavedContainer = ({ savedApis, addSavedApi, deleteSavedApi, isApiSaved }: 
           placeholder='Search Your Saved APIs!'
           onChange={(event) => setSearch(event.target.value)}
         />
-        {noMatchText && <h3 className="no-match-msg">{noMatchText}</h3>}
+        {noMatchText && <h3 className='no-match-msg'>{noMatchText}</h3>}
       <div className='saved-api-grid'>
         {savedApisList}
       </div>
