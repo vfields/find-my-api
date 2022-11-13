@@ -10,7 +10,10 @@ const LandingPage = () => {
       <h1 className="header-text">Find My API</h1>
       <h2 className="tag-text">Bootcamps are hard enough.<br />Finding an API should be easier!</h2>
       <p className="sub-tag-text">Search over 1,000+ free, public APIs by keyword, category, authentication requirements, and more. <br />Save your favorites, and get started on your project sooner!</p>
-      <NavLink exact to="/home"><button className="get-started-btn">Get Started</button></NavLink>
+      <div className="btn-container">
+        <NavLink exact to="/home"><button className="get-started-btn">Get Started</button></NavLink>
+        <NavLink exact to="/break"><button className="break-btn">Take A Break</button></NavLink>
+      </div>
     </section>
   );
 }

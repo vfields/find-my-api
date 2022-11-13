@@ -23,17 +23,25 @@
   text-align: center;
 }
 
-.get-started-btn {
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.get-started-btn,
+.break-btn {
   background-color: #717FD0;
   border: 0.5rem solid #36418A;
   border-radius: 1rem;
   font-size: 1.5rem;
   color: white;
   padding: 1rem 2.5rem;
-  margin-top: 1rem;
+  margin: 1rem;
 }
 
-.get-started-btn:hover {
+.get-started-btn:hover,
+.break-btn:hover {
   background-color: #36418A;
   border: 0.5rem solid #AF7D30;
   padding: 1.25rem 3.5rem;

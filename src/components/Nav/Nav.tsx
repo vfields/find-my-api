@@ -11,7 +11,7 @@ const Nav = () => {
       </div>
       <div className="text-container">
         <span className="logo-text">Find My API</span>
-        <NavLink exact to="/home" className="inactive home">Home</NavLink> | <NavLink exact to="/saved" className="inactive saved">Saved APIs</NavLink>
+        <NavLink exact to="/home" className="inactive home">Home</NavLink> | <NavLink exact to="/saved" className="inactive saved">Saved APIs</NavLink> | <NavLink exact to="/break" className="inactive home">Break</NavLink>
       </div>
     </nav>
   );

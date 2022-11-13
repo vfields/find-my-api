@@ -4,6 +4,7 @@ import './App.css';
 import { getApiData } from '../../apiCalls';
 import LandingPage from '../LandingPage/LandingPage';
 import Nav from '../Nav/Nav';
+import BreakPage from '../BreakPage/BreakPage';
 import Search from '../Search/Search';
 import ApiContainer from '../ApiContainer/ApiContainer';
 import SavedContainer from '../SavedContainer/SavedContainer';
@@ -139,6 +140,10 @@ function App() {
             deleteSavedApi={deleteSavedApi}
             isApiSaved={isApiSaved}
           />
+        </Route>
+        <Route exact path="/break">
+          <Nav />
+          <BreakPage />
         </Route>
         <Route component={BadUrl} />
       </Switch>
