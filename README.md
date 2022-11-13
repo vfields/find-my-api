@@ -39,7 +39,7 @@ Bootcamps are hard enough, finding an API should be easier! This responsive and 
 <p align="center"><img width="500" src="https://media.giphy.com/media/N7jOjCRDT65F7t9ChD/giphy.gif" alt="A gif preview of Find My API's advanced search options"></p>
 
 <h3 align="center">Saved APIs:</h3>
-<p align="center"><img width="500" src="https://media.giphy.com/media/QxkSP2G7bWDCiTKAtt/giphy.gif" alt="A gif preview of Find My API's save user selected APIs feature"></p>
+<p align="center"><img width="500" src="https://media.giphy.com/media/fT5Q8ak9RGgXathxEC/giphy.gif" alt="A gif preview of Find My API's save user selected APIs feature"></p>
 
 <h3 align="center">Take A Break:</h3>
 <p align="center"><img width="500" src="https://media.giphy.com/media/tfCWh67FSSDmq1K6m0/giphy.gif" alt="A gif preview of Find My API's take a break feature, displaying random dog videos and images"></p>
@@ -74,7 +74,6 @@ This final solo project was assigned during the third module of Turing's Front-E
 
 ## Roadmap
 
-- [ ] Add a search bar to the favorites page so that users can search through their favorited APIs
 - [ ] Add user ability to add comments to saved APIs
 - [ ] Break MultiSelect component down into smaller components
 
