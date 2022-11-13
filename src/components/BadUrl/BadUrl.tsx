@@ -9,9 +9,9 @@ const BadUrl = () => {
     <>
       <Nav />
       <section className='bad-url'>
-        <h1>We can help you find an API, but we can't find that page anywhere!</h1>
-        <img src={nightSky} alt='Two people standing side by side, gazing up at the twinkling night sky' />
-        <h3>Looks like an invalid URL. Try going <Link to='/home'>home</Link> or a different address!</h3>
+        <h1 className='bad-url-header'>We can help you find an API, but we can't find that page anywhere!</h1>
+        <img src={nightSky} alt='Two people standing side by side, gazing up at the twinkling night sky' className='bad-url-gif'/>
+        <h3 className='bad-url-tag'>Looks like an invalid URL. Try going <Link to='/home'>home</Link> or a different address!</h3>
       </section>
     </>
   );
